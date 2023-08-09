@@ -1,0 +1,110 @@
+/*Custom fonts*/
+@font-face {
+  font-family: Centra;
+  src: url('../assets/font/CentraNo2-Bold.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Centra;
+  src: url('../assets/font/CentraNo2-Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Centra;
+  src: url('../assets/font/CentraNo2-Book.ttf');
+  font-weight: 400;
+}
+
+/*Default CSS*/
+:root {
+  font-family: main, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --font-color-white: rgb(255, 255, 255);
+  --font-color-black: rgba(17, 17, 17, 0.89);
+  --gradient-main: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+
+body {
+  font-weight: 400;
+  font-family: 'Centra', sans-serif !important;
+  color: var(--font-color-white) !important;
+  background: var(--gradient-main) !important;
+  min-width: 320px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+
+nav.navbar {
+  padding: 18px 0;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 9999;
+  transition:  0.32s ease-in-out;
+}
+nav.navbar.scrolled {
+  padding: 0px 0;
+  background-color: var(--font-color-black);
+}
+nav.navbar a.navbar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+nav.navbar .navbar-nav {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+nav.navbar .navbar-nav .nav-link.navbar-link {
+  font-weight: 400;
+  color: var(--font-color-white) !important;
+  letter-spacing: 0.8px;
+  padding: 0 25px;
+  font-size: 18px;
+  opacity: 0.75;
+}
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+nav.navbar .navbar-nav a.nav-link.navbar-link.active {
+  opacity: 1;
+}
+nav.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width:1700px) {
+	nav.navbar .collapse .show {
+    background-color: #dbdbdb;
+  }
+}
+/* nav.navbar .collapse {
+  display: flex;
+  justify-content: end;
+} */
