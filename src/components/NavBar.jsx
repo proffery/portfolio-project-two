@@ -21,7 +21,7 @@ const NavBar = () => {
     }, [])
     return ( 
     <>
-        <Navbar expand="sm" bg="dark" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
+        <Navbar expand="sm" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
             <Container>
                 <Navbar.Brand href="#home"><h1>LOGO</h1></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
