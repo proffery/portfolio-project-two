@@ -141,5 +141,12 @@ nav.navbar .container {
 }
 
 .porfolio .card {
+  display: flex;
+  height: 100%;
   filter: grayscale(100%);
+}
+
+.porfolio .card img {
+  float: left;
+  height: 100%;
 }
