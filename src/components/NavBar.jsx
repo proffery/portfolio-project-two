@@ -4,6 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false)
+    const [activeLink, setActiveLink] = useState('home')
 
     useEffect(() => {
         const onScroll = () => {
@@ -19,6 +20,11 @@ const NavBar = () => {
 
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
+
+    const onUpdateActiveLink = (value) => {
+        setActiveLink(value)
+    }
+
     return ( 
     <>
         <Navbar expand="sm" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
@@ -29,10 +35,10 @@ const NavBar = () => {
                 </Navbar.Toggle>
                 <Navbar.Collapse className="justify-content-end">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#porfolio">Porfolio</Nav.Link>
-                        <Nav.Link href="#about">About</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
+                        <Nav.Link href="#portfolio" className={activeLink === 'porfolio' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('porfolio')}>Porfolio</Nav.Link>
+                        <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
+                        <Nav.Link href="#pricing" className={activeLink === 'pricing' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('pricing')}>Pricing</Nav.Link>
                     </Nav>
                     <Navbar.Text>
                         <a href="#login">Maria Ivanova</a>

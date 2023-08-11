@@ -76,7 +76,7 @@ const Portfolio = () => {
                                     autoPlaySpeed={5000}
                                     arrows={false}
                                     className='portfolio-slider'>
-                                {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
+                                    {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
                                     return (
                                         <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
                                     )
@@ -90,7 +90,7 @@ const Portfolio = () => {
                                     autoPlaySpeed={5000}
                                     arrows={false} 
                                     className='portfolio-slider'>
-                                {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
+                                    {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
                                     return (
                                         <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
                                     )
@@ -104,7 +104,7 @@ const Portfolio = () => {
                                     autoPlaySpeed={5000}
                                     arrows={false}
                                     className='portfolio-slider'>
-                                {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
+                                    {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
                                     return (
                                         <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
                                     )
