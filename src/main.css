@@ -192,7 +192,7 @@ nav.navbar .container {
 .about .list-group .list-group-item {
   background-color: #ffffff00;
   border-style: none solid none solid;
-  border-width: 2px;
+  border-width: 1px;
 }
 .about .list-group .list-group-item:first-child {
   border-left: none;
@@ -208,11 +208,85 @@ nav.navbar .container {
   color: var(--font-color-black);
 }
 
-.pricing h2 {
-
-}
-
 .pricing table tbody tr th,
 .pricing table tbody tr td {
   background-color: #00000000;
+}
+
+/*Contact*/
+
+.contact {
+  color: var(--font-color-white);
+  background-image: url("../assets/img/contact.JPG");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contact h2 {
+  text-shadow: var(--text-shadow);
+}
+
+.social-icon a {
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  margin-right: 6px;
+  align-items: center;
+  justify-content: center;
+}
+.social-icon a img {
+	width: 100%;
+  filter: invert();
+	z-index: 1;
+	transition: 0.3s ease-in-out;
+}
+.social-icon a:hover img {
+	opacity: .8;
+}
+
+.contact form input, .contact form select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  margin: 0 0 8px 0;
+  padding: 14px 26px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  transition: 0.3s ease-in-out;
+}
+.contact form input:focus, .contact form select:focus {
+  background: rgba(255, 255, 255, 1);
+  color: #121212;
+}
+.contact form input::placeholder, .contact form select::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+.contact form input:focus::placeholder, .contact form select:focus::placeholder {
+  color: #121212;
+  opacity: 0.8;
+}
+.contact form button {
+  font-weight: 700;
+  color: var(--font-color-black);
+  background-color: #fff;
+  padding: 14px 48px;
+  font-size: 18px;
+  border-radius: 0;
+  border: none;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.contact form button span {
+  z-index: 1;
+  position: relative;
+}
+.contact form button:hover {
+  color: var(--font-color-white);
+  background-color: var(--background-color-black);
+  opacity: .6;
 }

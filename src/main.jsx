@@ -7,6 +7,7 @@ import { MainLogo } from './components/MainLogo'
 import { Portfolio } from './components/Portfolio'
 import { About } from './components/About'
 import { Pricing } from './components/Pricing'
+import { Contact } from './components/Contact'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,5 +16,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Portfolio />
     <About />
     <Pricing />
+    <Contact />
   </React.StrictMode>,
 )
