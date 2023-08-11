@@ -133,7 +133,7 @@ nav.navbar .container {
 
 /*Portfolio*/
 
-.porfolio h2 {
+.porfolio {
   color: var(--font-color-black);
 }
 
@@ -200,4 +200,19 @@ nav.navbar .container {
 
 .about .list-group .list-group-item:last-child {
   border: none;
+}
+
+/*Pricing*/
+
+.pricing {
+  color: var(--font-color-black);
+}
+
+.pricing h2 {
+
+}
+
+.pricing table tbody tr th,
+.pricing table tbody tr td {
+  background-color: #00000000;
 }

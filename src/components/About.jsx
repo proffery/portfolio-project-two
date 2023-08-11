@@ -4,13 +4,17 @@ const About = () => {
     return (
         <section className="about" id="about">
             <Container>
-                <Row className="justify-content-center">
+                <Row className="mb-4 justify-content-center">
                     <Col>
                         <h2 className='my-5'>About me</h2>
                         <p>
                             Welcome to my photography portfolio! I’m passionate about capturing moments and turning them into timeless memories. With a camera in hand and an eye for detail, I strive to create images that tell stories and evoke emotions.
+                        </p>
+                        <p>
                             Photography has been my creative outlet for over a decade. From breathtaking landscapes to intimate portraits, I’ve had the privilege of exploring diverse subjects and styles. Every click of the shutter is a chance to freeze a unique perspective in time.
                             My work is a reflection of my curiosity and love for the world around me. Through my lens, I aim to share a piece of my journey and the beauty I find in both the ordinary and the extraordinary.
+                        </p>
+                        <p>
                             Thank you for visiting my portfolio. Feel free to explore my galleries and get in touch if you’d like to collaborate or inquire about my services. Let’s capture moments together!
                         </p>
                     </Col>
@@ -22,7 +26,7 @@ const About = () => {
                     <h2>Process</h2>
                 </Row>
                 <Row>
-                    <ListGroup horizontal={'md'} className="my-4">
+                    <ListGroup horizontal={'md'} className="mt-4">
                         <ListGroup.Item>
                             <h3>Acquaintance</h3>
                             <p>
