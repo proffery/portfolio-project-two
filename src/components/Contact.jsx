@@ -6,7 +6,7 @@ const Contact = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [selectedPackage, setSelectedPackage] = useState('')
-    const { ref } = useParallax({ speed: -6 })
+    const { ref } = useParallax({ speed: -5 })
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -16,7 +16,7 @@ const Contact = () => {
       }
 
     return (
-        <section ref={ref} className="contact" id="contact">
+        <section ref={ref} className="contact shadow" id="contact">
             <Container className="py-4">
                 <h2>Sign Up for a Photo Session</h2>
                 <Row>

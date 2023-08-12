@@ -2,8 +2,10 @@ import { Container, Row, Nav, Tab, TabPane } from 'react-bootstrap'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { PortfolioCard } from './PortfolioCard'
+import { useParallax } from 'react-scroll-parallax'
 
 const Portfolio = () => {
+    const { ref } = useParallax({ speed: 5 })
     const porfolioPhoto = [{
         category: "Individual",
         imgUrl: './assets/img/porfolio_individual1.JPG'
@@ -51,10 +53,10 @@ const Portfolio = () => {
     }
 
     return (
-            <section className="portfolio" id="portfolio">
+            <section ref={ref} className="portfolio" id="portfolio">
                 <Container>
                     <Row>
-                        <h2 className='my-5' >Portfolio</h2>
+                        <h2 className='my-4'>Portfolio</h2>
                         <Tab.Container id="porfolio-tab" defaultActiveKey='first'>
                             <Nav variant="underline" className="mb-4 px-3 d-flex align-items-center">
                                 <Nav.Item className='flex-fill'>

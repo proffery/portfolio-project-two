@@ -19,13 +19,13 @@
 
 /*Default CSS*/
 :root {
-  font-family: main, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Centra, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
 
   --font-color-white: rgb(255, 255, 255);
   --font-color-black: rgba(17, 17, 17, 0.89);
-  --background-color-black: rgba(17, 17, 17, 0.877);
+  --background-color-black: rgb(17, 17, 17);
   --text-shadow: 3px 3px 20px #050304,
   -2px 1px 30px #070607;
   --box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 0px;
@@ -47,7 +47,7 @@ html {
 
 body {
   font-weight: 400;
-  font-family: 'Centra', sans-serif !important;
+  font-family: Centra !important;
   color: var(--font-color-white) !important;
   background: var(--gradient-main) !important;
   min-width: 320px;
@@ -84,7 +84,7 @@ nav.navbar {
 
 nav.navbar.scrolled {
   padding: 2px 0;
-  background-color: rgba(0, 0, 0, 0.329);
+  background-color: var(--background-color-black);
 }
 
 nav.navbar a.navbar-brand {
@@ -346,4 +346,13 @@ footer a {
 
 footer a:visited {
   color: var(--background-color-black);
+}
+
+/*NotFound*/
+
+.not-found {
+  min-height: 91vh;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--font-color-black);
 }

@@ -1,7 +1,5 @@
-
 import { useEffect, useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
-
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false)
 
@@ -29,16 +27,15 @@ const NavBar = () => {
                     <span className='navbar-toggler-icon'></span>
                 </Navbar.Toggle>
                 <Navbar.Collapse className="justify-content-end">
-                    <Nav className="me-auto">
-                        <Nav.Link data-to-scrollspy-id="home" href="#home">Home</Nav.Link>
-                        <Nav.Link data-to-scrollspy-id="portfolio" href="#portfolio">Porfolio</Nav.Link>
-                        <Nav.Link data-to-scrollspy-id="about" href="#about">About</Nav.Link>
-                        <Nav.Link data-to-scrollspy-id="pricing" href="#pricing">Pricing</Nav.Link>
-                    </Nav>
+                        <Nav className="me-auto">
+                            <Nav.Link data-to-scrollspy-id="home" href="/#home">Home</Nav.Link>
+                            <Nav.Link data-to-scrollspy-id="portfolio" href="/#portfolio">Porfolio</Nav.Link>
+                            <Nav.Link data-to-scrollspy-id="about" href="/#about">About</Nav.Link>
+                            <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link> 
+                        </Nav>
                     <Navbar.Text>
                         <a href="#login">Maria Ivanova</a>
                     </Navbar.Text>
-                    <div></div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

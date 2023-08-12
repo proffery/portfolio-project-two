@@ -1,11 +1,13 @@
 import { Container, Row, Col, Image, ListGroup } from "react-bootstrap"
+import { useParallax } from 'react-scroll-parallax'
 
 const About = () => {
+    const { ref } = useParallax({ speed: 5 })
     return (
         <section className="about" id="about">
             <Container>
-                <h2 className='my-5'>About me</h2>
-                <Row className="mb-4 justify-content-center">
+                <h2 className='my-4'>About me</h2>
+                <Row ref={ref} className="mb-4 justify-content-center">
                     <Col>
                         <p>
                             Welcome to my photography portfolio! I’m passionate about capturing moments and turning them into timeless memories. With a camera in hand and an eye for detail, I strive to create images that tell stories and evoke emotions.

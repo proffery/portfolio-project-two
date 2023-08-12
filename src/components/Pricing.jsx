@@ -1,10 +1,12 @@
 import { Container, Table } from "react-bootstrap"
+import { useParallax } from 'react-scroll-parallax'
 
 const Pricing = () => {
+    const { ref } = useParallax({ speed: 10 })
     return (
-        <section className="pricing" id="pricing">
+        <section ref={ref} className="pricing" id="pricing">
             <Container>
-                <h2 className='my-5'>Pricing</h2>
+                <h2 className='mb-5'>Pricing</h2>
                 <Table className='mb-5' bordered hover>
                     <tbody>
                         <tr>
