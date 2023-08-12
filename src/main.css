@@ -148,36 +148,37 @@ nav.navbar .container button {
 
 /*Portfolio*/
 
-.porfolio {
+.potrfolio {
   color: var(--font-color-black);
 }
 
-.porfolio h2 {
+.portfolio h2 {
   z-index: -1;
+  color: var(--font-color-black);
 }
 
-.porfolio .container .row .nav {
+.portfolio .container .row .nav {
   gap: 1rem;
 }
 
-.porfolio .container .row .nav .nav-item .nav-link {
+.portfolio .container .row .nav .nav-item .nav-link {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.porfolio .card {
+.portfolio .card {
   display: flex;
   height: 100%;
   filter: grayscale(100%);
 }
 
-.porfolio .card img {
+.portfolio .card img {
   float: left;
   height: 100%;
 }
 
-.porfolio .nav-link {
+.portfolio .nav-link {
   font-weight: 500;
   letter-spacing: 0.8px;
   padding: 5px 25px;

@@ -3,7 +3,7 @@ import { Col, Row, Image } from 'react-bootstrap'
 import { useParallax } from 'react-scroll-parallax'
 
 const MainLogo = () => { 
-    const { ref } = useParallax({ speed: -6 })
+    const { ref } = useParallax({ speed: -10 })
 
     return (
         <section ref={ref} className='main-logo' id='home'>

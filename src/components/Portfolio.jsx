@@ -51,71 +51,71 @@ const Portfolio = () => {
     }
 
     return (
-        <section className="porfolio" id="portfolio">
-            <Container>
-                <Row>
-                    <h2 className='my-5'>Portfolio</h2>
-                    <Tab.Container id="porfolio-tab" defaultActiveKey='first'>
-                        <Nav variant="underline" className="mb-4 px-3 d-flex align-items-center">
-                            <Nav.Item className='flex-fill'>
-                                <Nav.Link className='flex-fill' eventKey="first">Individual</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item className='flex-fill'>
-                                <Nav.Link className='flex-fill' eventKey="second">Love story</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item className='flex-fill '>
-                                <Nav.Link className='flex-fill' eventKey="third">Street</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                        <Tab.Content>
-                            <TabPane eventKey='first'>
-                                <Carousel 
-                                    responsive={responsive} 
-                                    infinite={true} 
-                                    autoPlay={true} 
-                                    autoPlaySpeed={5000}
-                                    arrows={false}
-                                    className='portfolio-slider'>
-                                    {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
-                                    return (
-                                        <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
-                                    )
-                                })}
-                                </Carousel>
-                            </TabPane>
-                            <TabPane eventKey='second'>
-                            <Carousel responsive={responsive} 
-                                    infinite={true} 
-                                    autoPlay={true} 
-                                    autoPlaySpeed={5000}
-                                    arrows={false} 
-                                    className='portfolio-slider'>
-                                    {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
-                                    return (
-                                        <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
-                                    )
-                                })}
-                                </Carousel>
-                            </TabPane>
-                            <TabPane eventKey='third'>
-                            <Carousel responsive={responsive} 
-                                    infinite={true} 
-                                    autoPlay={true} 
-                                    autoPlaySpeed={5000}
-                                    arrows={false}
-                                    className='portfolio-slider'>
-                                    {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
-                                    return (
-                                        <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
-                                    )
-                                })}
-                                </Carousel>
-                            </TabPane>
-                        </Tab.Content>
-                    </Tab.Container>
-                </Row>
-            </Container>
-        </section>
+            <section className="portfolio" id="portfolio">
+                <Container>
+                    <Row>
+                        <h2 className='my-5' >Portfolio</h2>
+                        <Tab.Container id="porfolio-tab" defaultActiveKey='first'>
+                            <Nav variant="underline" className="mb-4 px-3 d-flex align-items-center">
+                                <Nav.Item className='flex-fill'>
+                                    <Nav.Link className='flex-fill' eventKey="first">Individual</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item className='flex-fill'>
+                                    <Nav.Link className='flex-fill' eventKey="second">Love story</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item className='flex-fill '>
+                                    <Nav.Link className='flex-fill' eventKey="third">Street</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                            <Tab.Content>
+                                <TabPane eventKey='first'>
+                                    <Carousel 
+                                        responsive={responsive} 
+                                        infinite={true} 
+                                        autoPlay={true} 
+                                        autoPlaySpeed={5000}
+                                        arrows={false}
+                                        className='portfolio-slider'>
+                                        {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
+                                        return (
+                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
+                                        )
+                                    })}
+                                    </Carousel>
+                                </TabPane>
+                                <TabPane eventKey='second'>
+                                <Carousel responsive={responsive} 
+                                        infinite={true} 
+                                        autoPlay={true} 
+                                        autoPlaySpeed={5000}
+                                        arrows={false} 
+                                        className='portfolio-slider'>
+                                        {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
+                                        return (
+                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
+                                        )
+                                    })}
+                                    </Carousel>
+                                </TabPane>
+                                <TabPane eventKey='third'>
+                                <Carousel responsive={responsive} 
+                                        infinite={true} 
+                                        autoPlay={true} 
+                                        autoPlaySpeed={5000}
+                                        arrows={false}
+                                        className='portfolio-slider'>
+                                        {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
+                                        return (
+                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
+                                        )
+                                    })}
+                                    </Carousel>
+                                </TabPane>
+                            </Tab.Content>
+                        </Tab.Container>
+                    </Row>
+                </Container>
+            </section>
     )
 }
 

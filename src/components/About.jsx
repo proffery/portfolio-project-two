@@ -2,7 +2,6 @@ import { Container, Row, Col, Image, ListGroup } from "react-bootstrap"
 
 const About = () => {
     return (
-
         <section className="about" id="about">
             <Container>
                 <h2 className='my-5'>About me</h2>
@@ -56,7 +55,6 @@ const About = () => {
                 </Row>
             </Container>
         </section>
-
     )
 }
 
