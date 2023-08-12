@@ -1,7 +1,7 @@
-import { Container, Row, Nav, Tab, TabPane } from 'react-bootstrap';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import { PortfolioCard } from './PortfolioCard';
+import { Container, Row, Nav, Tab, TabPane } from 'react-bootstrap'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import { PortfolioCard } from './PortfolioCard'
 
 const Portfolio = () => {
     const porfolioPhoto = [{

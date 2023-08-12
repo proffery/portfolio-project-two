@@ -1,9 +1,12 @@
 import Carousel from 'react-bootstrap/Carousel'
 import { Col, Row, Image } from 'react-bootstrap'
+import { useParallax } from 'react-scroll-parallax'
 
 const MainLogo = () => { 
+    const { ref } = useParallax({ speed: -6 })
+
     return (
-        <section className='main-logo' id='home'>
+        <section ref={ref} className='main-logo' id='home'>
             <Carousel fade>
                 <Carousel.Item>
                     <Row className="d-flex flex-column justify-content-center">

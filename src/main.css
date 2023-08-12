@@ -152,6 +152,10 @@ nav.navbar .container button {
   color: var(--font-color-black);
 }
 
+.porfolio h2 {
+  z-index: -1;
+}
+
 .porfolio .container .row .nav {
   gap: 1rem;
 }
