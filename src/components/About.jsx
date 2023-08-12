@@ -2,11 +2,12 @@ import { Container, Row, Col, Image, ListGroup } from "react-bootstrap"
 
 const About = () => {
     return (
+
         <section className="about" id="about">
             <Container>
+                <h2 className='my-5'>About me</h2>
                 <Row className="mb-4 justify-content-center">
                     <Col>
-                        <h2 className='my-5'>About me</h2>
                         <p>
                             Welcome to my photography portfolio! I’m passionate about capturing moments and turning them into timeless memories. With a camera in hand and an eye for detail, I strive to create images that tell stories and evoke emotions.
                         </p>
@@ -19,7 +20,7 @@ const About = () => {
                         </p>
                     </Col>
                     <Col md={6} className="image-holder">
-                        <Image className='my-5' src="./assets/img/about.JPG" alt="About me" thumbnail />
+                        <Image className='my-1' src="./assets/img/about.JPG" alt="About me" rounded   />
                     </Col>
                 </Row>
                 <Row>
@@ -55,6 +56,7 @@ const About = () => {
                 </Row>
             </Container>
         </section>
+
     )
 }
 

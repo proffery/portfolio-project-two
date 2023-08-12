@@ -1,21 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { NavBar } from './components/NavBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
-import { MainLogo } from './components/MainLogo'
-import { Portfolio } from './components/Portfolio'
-import { About } from './components/About'
-import { Pricing } from './components/Pricing'
-import { Contact } from './components/Contact'
+import { Home } from './components/pages/Home'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <NavBar />
-    <MainLogo />
-    <Portfolio />
-    <About />
-    <Pricing />
-    <Contact />
+    <Home />
   </React.StrictMode>,
 )

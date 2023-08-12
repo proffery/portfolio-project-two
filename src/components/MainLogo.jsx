@@ -12,8 +12,13 @@ const MainLogo = () => {
                         </Col>
                     </Row>
                     <Carousel.Caption>
-                        <h2>First slide label</h2>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <Row>
+                            <Col className='text-start'>
+                                <h2>Your Moments Captured</h2>
+                                <p>Welcome to my photography studio, where every moment is a memory waiting to be captured.</p>
+                                <a href="#contact">Sign Up for a Photo Session</a>
+                            </Col>
+                        </Row>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -23,8 +28,13 @@ const MainLogo = () => {
                         </Col>
                     </Row>
                     <Carousel.Caption>
-                        <h2>Second slide label</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <Row>
+                            <Col className='text-start'>
+                                <h2>Your Moments Captured</h2>
+                                <p>Welcome to my photography studio, where every moment is a memory waiting to be captured.</p>
+                                <a href="#contact">Sign Up for a Photo Session</a>
+                            </Col>
+                        </Row>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -34,8 +44,13 @@ const MainLogo = () => {
                         </Col>
                     </Row>
                     <Carousel.Caption>
-                        <h2>Third slide label</h2>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <Row>
+                            <Col className='text-start'>
+                                <h2>Your Moments Captured</h2>
+                                <p>Welcome to my photography studio, where every moment is a memory waiting to be captured.</p>
+                                <a href="#contact">Sign Up for a Photo Session</a>
+                            </Col>
+                        </Row>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -45,8 +60,13 @@ const MainLogo = () => {
                         </Col>
                     </Row>
                     <Carousel.Caption>
-                        <h2>Third slide label</h2>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <Row>
+                            <Col className='text-start'>
+                                <h2>Your Moments Captured</h2>
+                                <p>Welcome to my photography studio, where every moment is a memory waiting to be captured.</p>
+                                <a href="#contact">Sign Up for a Photo Session</a>
+                            </Col>
+                        </Row>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
