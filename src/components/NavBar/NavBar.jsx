@@ -1,8 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
-const NavBar = () => {
-    const [scrolled, setScrolled] = useState(false)
+import { LogIn } from './LogIn'
+import { LogOut } from './LogOut'
+import { User } from './User'
 
+// eslint-disable-next-line react/prop-types
+const NavBar = ({authStateChanged}) => {
+    const user = useContext(User)
+    const [scrolled, setScrolled] = useState(false)
+    // eslint-disable-next-line no-unused-vars
+    const [signInStatus, setSignInStatus] = useState(user === null ? false : !!user.auth.currentUser)
+    //console.log(user)
+    // console.log(authStateChanged)
     useEffect(() => {
         const onScroll = () => {
             if (window.scrollY > 50) {
@@ -34,7 +43,14 @@ const NavBar = () => {
                             <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link> 
                         </Nav>
                     <Navbar.Text>
-                        <a href="#login">Maria Ivanova</a>
+                        {signInStatus ? 
+                            <LogOut user={user} 
+                                authStateChanged={authStateChanged} 
+                                setSignInStatus={setSignInStatus}
+                            /> : 
+                            <LogIn authStateChanged={authStateChanged} 
+                            />
+                        }
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

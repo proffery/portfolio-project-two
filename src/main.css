@@ -1,19 +1,19 @@
 /*Custom fonts*/
 @font-face {
   font-family: Centra;
-  src: url('../assets/font/CentraNo2-Bold.ttf');
+  src: url('../public/assets/fonts/CentraNo2-Bold.ttf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('../assets/font/CentraNo2-Medium.ttf');
+  src: url('../public/assets/fonts/CentraNo2-Medium.ttf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('../assets/font/CentraNo2-Book.ttf');
+  src: url('../public/assets/fonts/CentraNo2-Book.ttf');
   font-weight: 400;
 }
 
@@ -144,6 +144,7 @@ nav.navbar .container button {
 .main-logo .carousel .carousel-item .carousel-caption p,
 .main-logo .carousel .carousel-item .carousel-caption a {
   text-shadow: var(--text-shadow);
+  margin: 0;
 }
 
 /*Portfolio*/
