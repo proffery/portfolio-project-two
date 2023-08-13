@@ -9,6 +9,7 @@ import {
   getAuth,
   onAuthStateChanged,
 } from 'firebase/auth'
+import { doc, getDoc, getFirestore} from "firebase/firestore"
 
 function initFirebaseAuth() {
   // Subscribe to the user's signed-in status
@@ -21,17 +22,26 @@ const authStateChanged = () => {
 
 async function authStateObserver(user) {
   let currentUser = null
-  
+  let isAdmin = false
   if (user) {
     currentUser = user
+    if (await getAdminEmail() === currentUser.email) {
+      isAdmin = true
+    }
+    // console.log(currentUser.email)
+    // console.log(await getAdminEmail())
   }
 
 
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <RouterSwitch currentUser={currentUser} authStateChanged={authStateChanged}/>
+        <RouterSwitch isAdmin={isAdmin} currentUser={currentUser} authStateChanged={authStateChanged}/>
     </React.StrictMode>,
   )
+}
+
+const getAdminEmail = async() => {    
+  return (await getDoc(doc(getFirestore(), 'admin', 'email'))).data().email
 }
 
 const firebaseAppConfig = getFirebaseConfig()

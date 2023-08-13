@@ -2,10 +2,11 @@ import { useEffect, useState, useContext } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { LogIn } from './LogIn'
 import { LogOut } from './LogOut'
-import { User } from './User'
+import { User } from '../../Context/User'
+import { NavLink } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
-const NavBar = ({authStateChanged}) => {
+const NavBar = ({authStateChanged, isAdmin}) => {
     const user = useContext(User)
     const [scrolled, setScrolled] = useState(false)
     // eslint-disable-next-line no-unused-vars
@@ -29,7 +30,7 @@ const NavBar = ({authStateChanged}) => {
 
     return ( 
     <>
-        <Navbar expand="sm" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
+        <Navbar expand="lg" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
             <Container>
                 <Navbar.Brand href="#home"><h1>LOGO</h1></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -40,7 +41,10 @@ const NavBar = ({authStateChanged}) => {
                             <Nav.Link data-to-scrollspy-id="home" href="/#home">Home</Nav.Link>
                             <Nav.Link data-to-scrollspy-id="portfolio" href="/#portfolio">Porfolio</Nav.Link>
                             <Nav.Link data-to-scrollspy-id="about" href="/#about">About</Nav.Link>
-                            <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link> 
+                            <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link>
+                            {isAdmin && 
+                                <Nav.Link as={NavLink} to={"/admin"}>Admin</Nav.Link>
+                            }
                         </Nav>
                     <Navbar.Text>
                         {signInStatus ? 

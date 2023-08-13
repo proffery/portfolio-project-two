@@ -112,7 +112,8 @@ nav.navbar .navbar-nav .nav-link {
 }
 
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
-nav.navbar .navbar-nav .active-scroll-spy {
+nav.navbar .navbar-nav .active-scroll-spy,
+nav.navbar .navbar-nav .active {
   opacity: 1;
 }
 
@@ -352,6 +353,13 @@ footer a:visited {
 /*NotFound*/
 
 .not-found {
+  min-height: 91vh;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--font-color-black);
+}
+
+.admin-board {
   min-height: 91vh;
   letter-spacing: 0.8px;
   font-weight: 700;
