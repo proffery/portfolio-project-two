@@ -1,8 +1,8 @@
-import { MainLogo } from '../MainLogo'
-import { Portfolio } from '../Portfolio'
-import { About } from '../About'
-import { Pricing } from '../Pricing'
-import { Contact } from '../Contact'
+import { MainLogo } from './components/MainLogo'
+import { Portfolio } from './components/Portfolio'
+import { About } from './components/About'
+import { Pricing } from './components/Pricing'
+import { Contact } from './components/Contact'
 import ScrollSpy from "react-ui-scrollspy"
 import { ParallaxProvider } from 'react-scroll-parallax'
 

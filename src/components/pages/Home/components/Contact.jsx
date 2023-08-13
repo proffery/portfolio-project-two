@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import { useParallax } from 'react-scroll-parallax'
+import { User } from '../../../../Context/User'
 
 const Contact = () => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
+    const user = useContext(User)
+    const [name, setName] = useState(user === null ? '' : user.auth.currentUser.displayName)
+    const [email, setEmail] = useState(user === null ? '' : user.auth.currentUser.email)
     const [selectedPackage, setSelectedPackage] = useState('')
     const { ref } = useParallax({ speed: -5 })
 

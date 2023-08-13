@@ -76,7 +76,6 @@ const Portfolio = () => {
                                         infinite={true} 
                                         autoPlay={true} 
                                         autoPlaySpeed={5000}
-                                        arrows={false}
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
                                         return (
@@ -90,7 +89,6 @@ const Portfolio = () => {
                                         infinite={true} 
                                         autoPlay={true} 
                                         autoPlaySpeed={5000}
-                                        arrows={false} 
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
                                         return (
@@ -104,7 +102,6 @@ const Portfolio = () => {
                                         infinite={true} 
                                         autoPlay={true} 
                                         autoPlaySpeed={5000}
-                                        arrows={false}
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
                                         return (

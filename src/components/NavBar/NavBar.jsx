@@ -3,7 +3,6 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 import { LogIn } from './LogIn'
 import { LogOut } from './LogOut'
 import { User } from '../../Context/User'
-import { NavLink } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
 const NavBar = ({authStateChanged, isAdmin}) => {
@@ -32,25 +31,24 @@ const NavBar = ({authStateChanged, isAdmin}) => {
     <>
         <Navbar expand="lg" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
             <Container>
-                <Navbar.Brand href="#home"><h1>LOGO</h1></Navbar.Brand>
+                <Navbar.Brand href="#home"><h1>MARIA IVANOVA</h1></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <span className='navbar-toggler-icon'></span>
                 </Navbar.Toggle>
                 <Navbar.Collapse className="justify-content-end">
-                        <Nav className="me-auto">
-                            <Nav.Link data-to-scrollspy-id="home" href="/#home">Home</Nav.Link>
-                            <Nav.Link data-to-scrollspy-id="portfolio" href="/#portfolio">Porfolio</Nav.Link>
-                            <Nav.Link data-to-scrollspy-id="about" href="/#about">About</Nav.Link>
-                            <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link>
-                            {isAdmin && 
-                                <Nav.Link as={NavLink} to={"/admin"}>Admin</Nav.Link>
-                            }
-                        </Nav>
+                    <Nav className="me-auto">
+                        <Nav.Link data-to-scrollspy-id="home" href="/#home">Home</Nav.Link>
+                        <Nav.Link data-to-scrollspy-id="portfolio" href="/#portfolio">Porfolio</Nav.Link>
+                        <Nav.Link data-to-scrollspy-id="about" href="/#about">About</Nav.Link>
+                        <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link>
+                    </Nav>
                     <Navbar.Text>
                         {signInStatus ? 
                             <LogOut user={user} 
                                 authStateChanged={authStateChanged} 
                                 setSignInStatus={setSignInStatus}
+                                signInStatus={signInStatus}
+                                isAdmin={isAdmin}
                             /> : 
                             <LogIn authStateChanged={authStateChanged} 
                             />

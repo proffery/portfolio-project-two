@@ -5,7 +5,7 @@ const MainLogo = () => {
 
     return (
         <section className='main-logo my-3 shadow' id='home'>
-            <Carousel fade>
+            <Carousel controls={false} indicators={false} fade>
                 <Carousel.Item>
                     <Row className="d-flex flex-column justify-content-center">
                         <Col xs={6} md={4}>

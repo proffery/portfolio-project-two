@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import Button from 'react-bootstrap/Button';
+import { Dropdown, NavItem } from 'react-bootstrap';
 import {
     getAuth,
     signOut,
 } from 'firebase/auth'
+import { NavLink } from 'react-router-dom';
 
-const LogOut = ({user, authStateChanged, setSignInStatus}) => {
+const LogOut = ({user, authStateChanged, setSignInStatus, isAdmin}) => {
     //console.log(user)
     const handleLogOut = async () => {
         await signOut(getAuth())
@@ -14,8 +15,16 @@ const LogOut = ({user, authStateChanged, setSignInStatus}) => {
     }
     return (
         <>
-            <span>Signed in as: <a href="#">{user.auth.currentUser.displayName}</a></span>
-            <Button className='mx-1' variant="secondary" onClick={handleLogOut}>Exit</Button>
+            <Dropdown as={NavItem}>
+                <Dropdown.Toggle as={NavLink}><span>Signed in as: {user.auth.currentUser.displayName}</span></Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item>Leave feedback</Dropdown.Item>
+                    {isAdmin &&
+                        <Dropdown.Item><NavLink to={"/admin"}>Admin board</NavLink></Dropdown.Item> 
+                    }
+                    <Dropdown.Item onClick={handleLogOut}><a>Exit</a></Dropdown.Item>
+                </Dropdown.Menu>
+                </Dropdown>
         </>
     )
 } 
