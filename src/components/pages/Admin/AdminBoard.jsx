@@ -1,7 +1,8 @@
 import { Container, Nav, Tab } from "react-bootstrap"
 import { AdminGeneral } from "./components/AdminGeneral"
 
-const AdminBoard = () => {
+// eslint-disable-next-line react/prop-types
+const AdminBoard = ({refreshPage}) => {
     return (
         <Container className="admin-board py-5 align-items-center justify-content-center">
             <h2 className="mt-5 text-center">Admin Board</h2>
@@ -19,7 +20,7 @@ const AdminBoard = () => {
                 </Nav>
                 <Tab.Content>
                     <Tab.Pane eventKey="general">
-                        <AdminGeneral />
+                        <AdminGeneral refreshPage={refreshPage}/>
                     </Tab.Pane>
                 </Tab.Content>
             </Tab.Container>

@@ -1,23 +1,32 @@
 import { Container, Row, Col, Image, ListGroup } from "react-bootstrap"
+import { useEffect, useState } from "react"
+import { doc, getDoc, getFirestore} from "firebase/firestore"
 import { useParallax } from 'react-scroll-parallax'
 
 const About = () => {
+    const [aboutText, setAboutText] = useState('')
     const { ref } = useParallax({ speed: 5 })
+
+    useEffect(() => {
+        const getLogoText = async() => {
+            const docRef = doc(getFirestore(), 'admin', 'general')
+            const docSnap = await getDoc(docRef)
+            if (docSnap.exists()) {
+                setAboutText(docSnap.data().about)
+            } else {
+                console.log("No such document!");
+            }
+        }
+        getLogoText()
+    }, [])
     return (
         <section className="about" id="about">
             <Container>
                 <h2 className='my-4'>About me</h2>
-                <Row ref={ref} className="mb-4 justify-content-center">
+                <Row  ref={ref} className="mb-4 justify-content-center">
                     <Col>
                         <p>
-                            Welcome to my photography portfolio! I’m passionate about capturing moments and turning them into timeless memories. With a camera in hand and an eye for detail, I strive to create images that tell stories and evoke emotions.
-                        </p>
-                        <p>
-                            Photography has been my creative outlet for over a decade. From breathtaking landscapes to intimate portraits, I’ve had the privilege of exploring diverse subjects and styles. Every click of the shutter is a chance to freeze a unique perspective in time.
-                            My work is a reflection of my curiosity and love for the world around me. Through my lens, I aim to share a piece of my journey and the beauty I find in both the ordinary and the extraordinary.
-                        </p>
-                        <p>
-                            Thank you for visiting my portfolio. Feel free to explore my galleries and get in touch if you’d like to collaborate or inquire about my services. Let’s capture moments together!
+                           {aboutText}
                         </p>
                     </Col>
                     <Col md={6} className="image-holder">
@@ -27,7 +36,7 @@ const About = () => {
                 <Row>
                     <h2>Process</h2>
                 </Row>
-                <Row>
+                <Row ref={ref}>
                     <ListGroup horizontal={'md'} className="mt-4">
                         <ListGroup.Item>
                             <h3>Acquaintance</h3>

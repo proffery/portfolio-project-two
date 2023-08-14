@@ -1,6 +1,5 @@
 import { useState, useContext } from "react"
 import { Container, Row, Col } from "react-bootstrap"
-import { useParallax } from 'react-scroll-parallax'
 import { User } from '../../../../Context/User'
 
 const Contact = () => {
@@ -8,7 +7,6 @@ const Contact = () => {
     const [name, setName] = useState(user === null ? '' : user.auth.currentUser.displayName)
     const [email, setEmail] = useState(user === null ? '' : user.auth.currentUser.email)
     const [selectedPackage, setSelectedPackage] = useState('')
-    const { ref } = useParallax({ speed: -5 })
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -18,9 +16,9 @@ const Contact = () => {
       }
 
     return (
-        <section ref={ref} className="contact shadow" id="contact">
+        <section className="contact shadow" id="contact">
             <Container className="py-4">
-                <h2>Sign Up for a Photo Session</h2>
+                <h2>Sign up for a photo session</h2>
                 <Row>
                     <Col>
                     </Col>

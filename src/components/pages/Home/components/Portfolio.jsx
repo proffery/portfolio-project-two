@@ -55,8 +55,8 @@ const Portfolio = () => {
     return (
             <section ref={ref} className="portfolio" id="portfolio">
                 <Container>
+                    <h2 className='my-4'>Portfolio</h2>
                     <Row>
-                        <h2 className='my-4'>Portfolio</h2>
                         <Tab.Container id="porfolio-tab" defaultActiveKey='first'>
                             <Nav variant="underline" className="mb-4 px-3 d-flex align-items-center">
                                 <Nav.Item className='flex-fill'>

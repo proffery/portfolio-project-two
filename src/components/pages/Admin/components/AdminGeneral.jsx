@@ -2,11 +2,13 @@ import { Form, Button } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { doc, getDoc, getFirestore, setDoc} from "firebase/firestore"
 
-const AdminGeneral = () => {
+// eslint-disable-next-line react/prop-types
+const AdminGeneral = ({refreshPage}) => {
     const [generalData, setGeneralData] = useState({
         banner_large: '',
         banner_small: '',
-        name: ''
+        name: '',
+        about: ''
     })
     const [validated, setValidated] = useState(false)
     const [buttonText, setButtonText] = useState('Save')
@@ -33,14 +35,23 @@ const AdminGeneral = () => {
 
     const onFormSubmit = async(e) => {
         e.preventDefault()
-        setButtonText("Saving...")
+        const timeout = () => {
+            const timer = setTimeout(() => {
+                setButtonText("Save")
+              }, 1000);
+            return () => clearTimeout(timer);
+        }
         const form = e.currentTarget
         if (form.checkValidity() === false) {
             e.stopPropagation();
+            setButtonText("Saving...")
+            timeout()
         }
         else {
             await setDoc(doc(getFirestore(), 'admin', 'general'), generalData)
-            .then(setButtonText("Save"))
+            .then(refreshPage())
+            .then(setButtonText("Saving..."))
+            .then(timeout())
         }
         setValidated(true)
         
@@ -56,13 +67,19 @@ const AdminGeneral = () => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Logo text (large)</Form.Label>
-                <Form.Control value={generalData.banner_large} onChange={(e) => onFormUpdate('banner_large', e.target.value)} as="textarea" rows={2} required/>
+                <Form.Control value={generalData.banner_large} onChange={(e) => onFormUpdate('banner_large', e.target.value)} as="textarea" rows={2} placeholder="Enter text for the main banner" required/>
                 <Form.Control.Feedback>Ok!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Logo text (small)</Form.Label>
-                <Form.Control value={generalData.banner_small} onChange={(e) => onFormUpdate('banner_small', e.target.value)} as="textarea" rows={2} required/>
+                <Form.Control value={generalData.banner_small} onChange={(e) => onFormUpdate('banner_small', e.target.value)} as="textarea" rows={2} placeholder="Enter text for the main banner" required/>
+                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label>About</Form.Label>
+                <Form.Control value={generalData.about} onChange={(e) => onFormUpdate('about', e.target.value)} as="textarea" placeholder="Enter text for the about section" rows={4} required/>
                 <Form.Control.Feedback>Ok!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
             </Form.Group>
