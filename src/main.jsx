@@ -28,16 +28,26 @@ async function authStateObserver(user) {
     if (await getAdminEmail() === currentUser.email) {
       isAdmin = true
     }
-    // console.log(currentUser.email)
-    // console.log(await getAdminEmail())
   }
 
 
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <RouterSwitch isAdmin={isAdmin} currentUser={currentUser} authStateChanged={authStateChanged}/>
+        <RouterSwitch 
+          isAdmin={isAdmin} 
+          currentUser={currentUser} 
+          authStateChanged={authStateChanged} 
+          refreshPage={refreshPage}
+        />
     </React.StrictMode>,
   )
+}
+
+const refreshPage = () => {
+  const timer = setTimeout(() => {
+      window.location.reload(true)
+    }, 150);
+    return () => clearTimeout(timer);
 }
 
 const getAdminEmail = async() => {    

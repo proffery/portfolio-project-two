@@ -82,6 +82,12 @@ nav.navbar {
   transition: all 0.32s ease-in-out;
 }
 
+nav.navbar h1 {
+  font-size: 32px;
+  margin-right: 2rem;
+  text-transform: uppercase;
+}
+
 nav.navbar.scrolled {
   padding: 2px 0;
   background-color: var(--background-color-black);
@@ -356,6 +362,10 @@ footer a {
 
 footer a:visited {
   color: var(--background-color-black);
+}
+
+footer .name {
+  text-transform: capitalize;
 }
 
 /*NotFound*/

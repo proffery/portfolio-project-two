@@ -3,15 +3,27 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 import { LogIn } from './LogIn'
 import { LogOut } from './LogOut'
 import { User } from '../../Context/User'
+import { doc, getDoc, getFirestore} from "firebase/firestore"
 
 // eslint-disable-next-line react/prop-types
 const NavBar = ({authStateChanged, isAdmin}) => {
     const user = useContext(User)
+    const [logoName, setLogoName] = useState('')
     const [scrolled, setScrolled] = useState(false)
     // eslint-disable-next-line no-unused-vars
     const [signInStatus, setSignInStatus] = useState(user === null ? false : !!user.auth.currentUser)
-    //console.log(user)
-    // console.log(authStateChanged)
+    useEffect(() => {
+        const getLogoName = async() => {
+            const docRef = doc(getFirestore(), 'admin', 'general')
+            const docSnap = await getDoc(docRef)
+            if (docSnap.exists()) {
+                setLogoName(docSnap.data().name)
+              } else {
+                console.log("No such document!");
+            }
+        }
+        getLogoName()
+    }, [])
     useEffect(() => {
         const onScroll = () => {
             if (window.scrollY > 50) {
@@ -29,9 +41,9 @@ const NavBar = ({authStateChanged, isAdmin}) => {
 
     return ( 
     <>
-        <Navbar expand="lg" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
+        <Navbar expand="md" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
             <Container>
-                <Navbar.Brand href="#home"><h1>MARIA IVANOVA</h1></Navbar.Brand>
+                <Navbar.Brand href="/#home"><h1>{logoName}</h1></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <span className='navbar-toggler-icon'></span>
                 </Navbar.Toggle>
@@ -42,7 +54,7 @@ const NavBar = ({authStateChanged, isAdmin}) => {
                         <Nav.Link data-to-scrollspy-id="about" href="/#about">About</Nav.Link>
                         <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link>
                     </Nav>
-                    <Navbar.Text>
+                    <Navbar.Text className='pb-1'>
                         {signInStatus ? 
                             <LogOut user={user} 
                                 authStateChanged={authStateChanged} 
