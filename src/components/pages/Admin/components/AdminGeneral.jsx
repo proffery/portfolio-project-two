@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { doc, getDoc, getFirestore, setDoc} from "firebase/firestore"
 
 // eslint-disable-next-line react/prop-types
-const AdminGeneral = ({refreshPage}) => {
+const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
     const [generalData, setGeneralData] = useState({
         banner_large: '',
         banner_small: '',
@@ -30,31 +30,28 @@ const AdminGeneral = ({refreshPage}) => {
         setGeneralData({
             ...generalData,
             [category]: value
-        }) 
+        })
+        setButtonText("Save")
+        setValidated(false)
     }
 
     const onFormSubmit = async(e) => {
         e.preventDefault()
-        const timeout = () => {
-            const timer = setTimeout(() => {
-                setButtonText("Save")
-              }, 1000);
-            return () => clearTimeout(timer);
-        }
         const form = e.currentTarget
         if (form.checkValidity() === false) {
             e.stopPropagation();
-            setButtonText("Saving...")
-            timeout()
+            setValidated(true)
         }
         else {
             await setDoc(doc(getFirestore(), 'admin', 'general'), generalData)
-            .then(refreshPage())
-            .then(setButtonText("Saving..."))
-            .then(timeout())
+            .then(setValidated(true))
+            .then(setButtonText('Saved'))
+            .then(setAdditionalHeader(() => {return <>
+                <span>Admin Board</span>
+                <Button onClick={() => {refreshPage()}} variant="secondary" type="button">Refresh page</Button>
+            </>}))
+
         }
-        setValidated(true)
-        
     }
 
     return (

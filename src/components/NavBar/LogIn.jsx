@@ -16,22 +16,22 @@ const LogIn = ({authStateChanged}) => {
         .then(authStateChanged)
     }
 
-    return (
-        <Dropdown data-bs-theme="dark">
-        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-          Login
-        </Dropdown.Toggle>
+return (
+    <Dropdown data-bs-theme="dark">
+      <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+        Login
+      </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={googleLoginHandle} active>
-            Google
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Facebook (in dev...)</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Apple (in dev...)</Dropdown.Item>
-          <Dropdown.Item href="#/action-4">GitHub (in dev...)</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    )
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={googleLoginHandle}>
+          Google
+        </Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Facebook (in dev...)</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Apple (in dev...)</Dropdown.Item>
+        <Dropdown.Item href="#/action-4">GitHub (in dev...)</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  )
 }
 
 export { LogIn }

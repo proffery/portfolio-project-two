@@ -24,6 +24,7 @@ async function authStateObserver(user) {
   let currentUser = null
   let isAdmin = false
   if (user) {
+    console.log(user)
     currentUser = user
     if (await getAdminEmail() === currentUser.email) {
       isAdmin = true
@@ -46,7 +47,7 @@ async function authStateObserver(user) {
 const refreshPage = () => {
   const timer = setTimeout(() => {
       window.location.reload(true)
-    }, 150);
+    }, 500);
     return () => clearTimeout(timer);
 }
 

@@ -56,10 +56,10 @@ const NavBar = ({authStateChanged, isAdmin}) => {
                     </Nav>
                     <Navbar.Text className='pb-1'>
                         {signInStatus ? 
-                            <LogOut user={user} 
-                                authStateChanged={authStateChanged} 
-                                setSignInStatus={setSignInStatus}
+                            <LogOut 
+                                user={user}
                                 signInStatus={signInStatus}
+                                authStateChanged={authStateChanged} 
                                 isAdmin={isAdmin}
                             /> : 
                             <LogIn authStateChanged={authStateChanged} 

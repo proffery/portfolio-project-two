@@ -5,6 +5,7 @@ import { Home } from './pages/Home/Home'
 import NotFound from './pages/NotFound'
 import { User } from '../Context/User'
 import { AdminBoard } from './pages/Admin/AdminBoard'
+import { LeaveFeedback } from './pages/LeaveFeedback'
 
 // eslint-disable-next-line react/prop-types
 const RouterSwitch = ({currentUser, authStateChanged, isAdmin, refreshPage}) => {
@@ -20,7 +21,10 @@ const RouterSwitch = ({currentUser, authStateChanged, isAdmin, refreshPage}) => 
                             <Route path='/' element={<Home />} />
                             <Route path='*' element={<NotFound />} />
                             {isAdmin && 
-                                <Route path='/admin' element={<AdminBoard refreshPage={refreshPage}/>} />
+                                <Route path='/admin' element={<AdminBoard refreshPage={refreshPage} />} />
+                            }
+                            {currentUser !== null && 
+                                <Route path='/feedback' element={<LeaveFeedback /> } />
                             }
                         </Routes>
                     <Footer />

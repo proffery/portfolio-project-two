@@ -6,19 +6,20 @@ import {
 } from 'firebase/auth'
 import { NavLink } from 'react-router-dom';
 
-const LogOut = ({user, authStateChanged, setSignInStatus, isAdmin}) => {
+const LogOut = ({user, authStateChanged, isAdmin, signInStatus}) => {
     //console.log(user)
     const handleLogOut = async () => {
         await signOut(getAuth())
         .then(authStateChanged)
-        .then(setSignInStatus(false))
     }
     return (
         <>
             <Dropdown as={NavItem}>
                 <Dropdown.Toggle as={NavLink}><span>Signed in as: {user.auth.currentUser.displayName}</span></Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item>Leave feedback</Dropdown.Item>
+                    {signInStatus && 
+                        <Dropdown.Item><NavLink to={"/feedback"}>Leave feedback</NavLink></Dropdown.Item>
+                    }
                     {isAdmin &&
                         <Dropdown.Item><NavLink to={"/admin"}>Admin board</NavLink></Dropdown.Item> 
                     }

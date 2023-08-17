@@ -83,8 +83,8 @@ nav.navbar {
 }
 
 nav.navbar h1 {
-  font-size: 32px;
-  margin-right: 2rem;
+  font-size: 30px;
+  margin-right: .5rem;
   text-transform: uppercase;
 }
 
@@ -376,7 +376,18 @@ footer .name {
   font-weight: 700;
   color: var(--font-color-black);
 }
+
+/*Leave feedback*/
+
+.leave-feedback {
+  min-height: 91vh;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--font-color-black);
+}
+
 /*Admin board*/
+
 .admin-board {
   min-height: 91vh;
   letter-spacing: 0.8px;
