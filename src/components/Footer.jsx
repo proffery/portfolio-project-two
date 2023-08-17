@@ -24,7 +24,7 @@ const Footer = () => {
                         <span className="name">{logoName} © 2023</span>
                     </Col>
                     <Col className="d-flex justify-content-between">
-                        <a href="/#home">Home</a>
+                        {/* <a href="/#home">Home</a> */}
                         <a href="/#portfolio">Portfolio</a>
                         <a href="/#about">About</a>
                         <a href="/#pricing">Pricing</a>

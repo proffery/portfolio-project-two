@@ -22,7 +22,7 @@
   font-family: Centra, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: geometricPrecision;
-
+  
   --font-color-white: rgb(255, 255, 255);
   --font-color-black: rgba(17, 17, 17, 0.89);
   --background-color-black: rgb(17, 17, 17);
@@ -136,6 +136,44 @@ nav.navbar .container {
 nav.navbar .container button {
   margin-right: .5rem;
 }
+
+.back-to-top {
+  display: block;
+  position: fixed;
+  cursor: pointer;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99999;
+}
+
+.back-to-top img {
+  max-height: 3rem;;
+}
+
+/*Footer*/
+
+footer {
+  color: var(--background-color-black) !important;
+  font-weight: 400;
+  padding: 5px 25px;
+  opacity: 0.75;
+}
+
+footer a {
+  text-decoration: none;
+  margin-right: .5rem;
+}
+
+footer a:visited {
+  color: var(--background-color-black);
+}
+
+footer .name {
+  text-transform: capitalize;
+}
+
+
+/*******Home page*******/
 
 /*Main LOGO*/
 
@@ -346,29 +384,16 @@ nav.navbar .container button {
   opacity: .6;
 }
 
-/*Footer*/
 
-footer {
-  color: var(--background-color-black) !important;
-  font-weight: 400;
-  padding: 5px 25px;
-  opacity: 0.75;
+
+/*Feedbacks*/
+
+.feedbacks h2 {
+  color: var(--font-color-black);
 }
 
-footer a {
-  text-decoration: none;
-  margin-right: .5rem;
-}
 
-footer a:visited {
-  color: var(--background-color-black);
-}
-
-footer .name {
-  text-transform: capitalize;
-}
-
-/*NotFound*/
+/*******NotFound*******/
 
 .not-found {
   min-height: 91vh;
@@ -377,7 +402,7 @@ footer .name {
   color: var(--font-color-black);
 }
 
-/*Leave feedback*/
+/*******Leave Feedback*******/
 
 .leave-feedback {
   min-height: 91vh;
@@ -386,7 +411,7 @@ footer .name {
   color: var(--font-color-black);
 }
 
-/*Admin board*/
+/*******Admin Board*******/
 
 .admin-board {
   min-height: 91vh;

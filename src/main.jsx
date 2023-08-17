@@ -24,7 +24,6 @@ async function authStateObserver(user) {
   let currentUser = null
   let isAdmin = false
   if (user) {
-    console.log(user)
     currentUser = user
     if (await getAdminEmail() === currentUser.email) {
       isAdmin = true

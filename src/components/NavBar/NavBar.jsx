@@ -49,10 +49,11 @@ const NavBar = ({authStateChanged, isAdmin}) => {
                 </Navbar.Toggle>
                 <Navbar.Collapse className="justify-content-end">
                     <Nav className="me-auto">
-                        <Nav.Link data-to-scrollspy-id="home" href="/#home">Home</Nav.Link>
+                        {/* <Nav.Link data-to-scrollspy-id="home" href="/#home">Home</Nav.Link> */}
                         <Nav.Link data-to-scrollspy-id="portfolio" href="/#portfolio">Porfolio</Nav.Link>
                         <Nav.Link data-to-scrollspy-id="about" href="/#about">About</Nav.Link>
                         <Nav.Link data-to-scrollspy-id="pricing" href="/#pricing">Pricing</Nav.Link>
+                        <Nav.Link data-to-scrollspy-id="feedbacks" href="/#feedbacks">Feedbacks</Nav.Link>
                     </Nav>
                     <Navbar.Text className='pb-1'>
                         {signInStatus ? 
@@ -69,6 +70,11 @@ const NavBar = ({authStateChanged, isAdmin}) => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+        {scrolled && 
+        <a href="#" className='back-to-top'>
+            <img src="../../../public/assets/img/back-to-top-icon.svg" alt="Back to top" />
+        </a>
+        }
     </>
     )
 }

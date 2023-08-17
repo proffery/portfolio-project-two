@@ -8,7 +8,8 @@ const LeaveFeedback = () => {
     const [feedbackData, setFeedbackData] = useState({
         feedback: '',
         isPublished: false,
-        timestamp: serverTimestamp()
+        timestamp: serverTimestamp(),
+        author: user.auth.currentUser.displayName
     })
     const [validated, setValidated] = useState(false)
     // eslint-disable-next-line no-unused-vars
