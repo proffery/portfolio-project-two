@@ -11,6 +11,7 @@ const LeaveFeedback = () => {
         timestamp: serverTimestamp()
     })
     const [validated, setValidated] = useState(false)
+    // eslint-disable-next-line no-unused-vars
     const [maxLength, setMaxLength] = useState(200)
     const [buttonText, setButtonText] = useState('Save')
     
