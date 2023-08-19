@@ -30,13 +30,11 @@ const About = () => {
                         </p>
                     </Col>
                     <Col md={6} className="image-holder">
-                        <Image className='my-1' src="./assets/img/about.JPG" alt="About me" rounded   />
+                        <Image className='my-1 rounded-0 shadow' src="./assets/img/about.JPG" alt="About me" rounded   />
                     </Col>
                 </Row>
-                <Row>
-                    <h2>Process</h2>
-                </Row>
                 <Row ref={ref}>
+                    <h2>Process</h2>
                     <ListGroup horizontal={'md'} className="mt-4">
                         <ListGroup.Item>
                             <h3>Acquaintance</h3>

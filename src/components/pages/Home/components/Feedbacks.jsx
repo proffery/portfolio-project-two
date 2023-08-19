@@ -48,21 +48,23 @@ const Feedbacks = () => {
 
     return (
         <section className="feedbacks my-5" id="feedbacks">
-            <Container>
-                <h2 className='mb-4'>Feedbacks</h2>
+            <Container >
+                <h2 className='mb-3'>Feedbacks</h2>
                 <Carousel 
                     responsive={responsive} 
-                    infinite={true} 
-                    autoPlay={true} 
+                    infinite={false} 
+                    autoPlay={false} 
                     autoPlaySpeed={5000}
-                    centerMode={true}
+                    keyBoardControl={true}
+                    arrows={true}
                     focusOnSelect={true}
-                    arrows={false}
+                    centerMode={true}
+                    rewind={false}
                     className='feedback-slider'>
                     {feedbacks.map((feedback, index) => {
                         return (
                             <FeedbackCard key={index} {...feedback}/>
-                        )
+                            )
                     })}
                 </Carousel>
             </Container>

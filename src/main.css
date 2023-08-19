@@ -29,7 +29,8 @@
   --text-shadow: 3px 3px 20px #050304,
   -2px 1px 30px #070607;
   --box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 0px;
-  --gradient-main: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);;
+  --gradient-main: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
+  --gradient-card: linear-gradient(to left, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
 }
 
 * {
@@ -75,7 +76,7 @@ a:hover {
 nav.navbar {
   background-color: var(--background-color-black);
   padding: 10px 0;
-  position: fixed;
+  position: sticky;
   width: 100vw;
   top: 0;
   z-index: 9999;
@@ -93,10 +94,10 @@ nav.navbar.scrolled {
   background-color: var(--background-color-black);
 }
 
-nav.navbar a.navbar-brand {
-  display: flex;
-  align-items: center;
-  justify-content: left;
+
+
+nav.navbar .navbar-toggler {
+  border: none;
 }
 
 nav.navbar .navbar-nav {
@@ -392,6 +393,41 @@ footer .name {
   color: var(--font-color-black);
 }
 
+.feedbacks .feedback-card {
+  background-image: var(--gradient-card);
+  box-shadow: var(--box-shadow);
+  transition: all ease-in-out .5s;
+}
+
+.feedbacks .feedback-card .card-text {
+  display: -webkit-box;
+  justify-content: left;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: justify;
+}
+
+
+.feedbacks .feedback-card .card-text.expanded {
+  -webkit-line-clamp: unset;
+}
+
+.feedbacks .feedback-card .card-link {
+  display: flex;
+  color: var(--font-color-black);
+  text-transform: capitalize;
+  text-decoration: none;
+  justify-content: right;
+}
+
+.feedbacks .feedback-card .card-subtitle {
+  text-align: right;
+}
+
+.feedbacks .react-multi-carousel-track {
+  gap: 1rem;
+}
 
 /*******NotFound*******/
 
