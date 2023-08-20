@@ -32,7 +32,7 @@ const LeaveFeedback = () => {
     useEffect(() => {
         const restLength = maxLength - feedbackData.feedback.length
         setButtonText(`Save (${restLength})`)
-    }, [feedbackData.feedback.length])
+    }, [feedbackData.feedback, maxLength])
 
     const onFormUpdate = (category, value) => {
         setFeedbackData({

@@ -5,7 +5,7 @@ import { useParallax } from 'react-scroll-parallax'
 
 const About = () => {
     const [aboutText, setAboutText] = useState('')
-    const { ref } = useParallax({ speed: 5 })
+    const { ref } = useParallax({ speed: -5 })
 
     useEffect(() => {
         const getLogoText = async() => {
@@ -23,7 +23,7 @@ const About = () => {
         <section className="about" id="about">
             <Container>
                 <h2 className='my-4'>About me</h2>
-                <Row  ref={ref} className="mb-4 justify-content-center">
+                <Row  ref={ref} className="mb-5 justify-content-center">
                     <Col>
                         <p>
                            {aboutText}
@@ -35,7 +35,7 @@ const About = () => {
                 </Row>
                 <Row ref={ref}>
                     <h2>Process</h2>
-                    <ListGroup horizontal={'md'} className="mt-4">
+                    <ListGroup horizontal={'md'} className="mt-3">
                         <ListGroup.Item>
                             <h3>Acquaintance</h3>
                             <p>

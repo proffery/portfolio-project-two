@@ -47,7 +47,7 @@ const Feedbacks = () => {
     }, [])
 
     return (
-        <section className="feedbacks my-5" id="feedbacks">
+        <section className="feedbacks mb-5" id="feedbacks">
             <Container >
                 <h2 className='mb-3'>Feedbacks</h2>
                 <Carousel 
