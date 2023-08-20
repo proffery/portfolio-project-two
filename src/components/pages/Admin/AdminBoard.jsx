@@ -2,6 +2,7 @@ import { Container, Nav, Tab } from "react-bootstrap"
 import { AdminGeneral } from "./components/AdminGeneral"
 import { useState } from "react"
 import { AdminFeedbacks } from "./components/AdminFeedbacks"
+import { AdminPricing } from "./components/AdminPricing"
 
 // eslint-disable-next-line react/prop-types
 const AdminBoard = ({refreshPage}) => {
@@ -18,6 +19,9 @@ const AdminBoard = ({refreshPage}) => {
                         <Nav.Link eventKey="gallery">Gallery</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
+                        <Nav.Link eventKey="pricing">Pricing</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
                         <Nav.Link eventKey="feedbacks">Feedbacks</Nav.Link>
                     </Nav.Item>
                 </Nav>
@@ -26,7 +30,10 @@ const AdminBoard = ({refreshPage}) => {
                         <AdminGeneral refreshPage={refreshPage} setAdditionalHeader={setAdditionalHeader} />
                     </Tab.Pane>
                     <Tab.Pane eventKey="feedbacks">
-                        <AdminFeedbacks/>
+                        <AdminFeedbacks />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="pricing">
+                        <AdminPricing />
                     </Tab.Pane>
                 </Tab.Content>
             </Tab.Container>

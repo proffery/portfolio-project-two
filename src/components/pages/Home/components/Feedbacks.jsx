@@ -52,12 +52,12 @@ const Feedbacks = () => {
                 <h2 className='mb-3'>Feedbacks</h2>
                 <Carousel 
                     responsive={responsive} 
-                    infinite={false} 
-                    autoPlay={false} 
+                    infinite={true} 
+                    autoPlay={true} 
                     autoPlaySpeed={5000}
                     keyBoardControl={true}
                     arrows={true}
-                    focusOnSelect={true}
+                    focusOnSelect={false}
                     centerMode={true}
                     rewind={false}
                     className='feedback-slider'>

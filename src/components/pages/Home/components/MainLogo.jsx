@@ -32,9 +32,9 @@ const MainLogo = () => {
     
 
     return (
-        <section className='main-logo  shadow' id='home'>
+        <section className='main-logo shadow' id='home'>
             <Carousel controls={false} indicators={false} fade>
-            {logoPhoto.map((photo, index)=> {return (
+            {logoPhoto.map((photo, index)=>
                 <Carousel.Item key={index}>
                     <Row className="d-flex flex-column justify-content-center">
                         <Col xs={6} md={4}>
@@ -51,7 +51,7 @@ const MainLogo = () => {
                         </Row>
                     </Carousel.Caption>
                 </Carousel.Item>
-            )})}
+            )}
             </Carousel>
         </section>
     )
