@@ -48,7 +48,7 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
             name: `Name (${maxLengthes.name - generalData.name.length})`,
             about: `About (${maxLengthes.about - generalData.about.length})`
         })
-    }, [generalData.banner_large.length, generalData.banner_small.length, generalData.name.length, generalData.about.length])
+    }, [generalData, maxLengthes])
 
     const onFormUpdate = (category, value) => {
         setGeneralData({

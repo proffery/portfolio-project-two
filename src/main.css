@@ -30,7 +30,7 @@
   -2px 1px 30px #070607;
   --box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 0px;
   --gradient-main: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
-  --gradient-card: linear-gradient(to left, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
+  --gradient-card: linear-gradient(to left, #e4e3e1, #f2f2f2, #dbdbdb, #eaeaea);
 }
 
 * {

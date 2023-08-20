@@ -8,7 +8,7 @@ import { AdminPricing } from "./components/AdminPricing"
 const AdminBoard = ({refreshPage}) => {
     const [additionalHeader, setAdditionalHeader] = useState('Admin Board')
     return (
-        <Container className="admin-board py-5 align-items-center justify-content-center">
+        <Container className="admin-board align-items-center justify-content-center">
             <h2 className="mt-5 text-center">{additionalHeader}</h2>
             <Tab.Container defaultActiveKey="general">
                 <Nav className=" my-3 d-flex align-items-center justify-content-center" variant="underline">
