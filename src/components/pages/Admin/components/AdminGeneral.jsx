@@ -70,10 +70,12 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
             await setDoc(doc(getFirestore(), 'admin', 'general'), generalData)
             .then(setValidated(true))
             .then(setButtonText('Saved'))
-            .then(setAdditionalHeader(() => {return <>
-                <span>Admin Board </span>
-                <Button onClick={() => {refreshPage()}} variant="secondary" type="button">Refresh page</Button>
-            </>}))
+            .then(setAdditionalHeader(() => 
+                <>
+                    <span>Admin Board </span>
+                    <Button onClick={() => {refreshPage()}} variant="secondary" type="button">Refresh page</Button>
+                </>
+            ))
 
         }
     }
