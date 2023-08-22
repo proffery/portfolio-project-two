@@ -12,7 +12,7 @@ import {
 import { doc, getDoc, getFirestore} from "firebase/firestore"
 
 function initFirebaseAuth() {
-  // Subscribe to the user's signed-in status
+  // Subscribe to the user's signed-in status!
   onAuthStateChanged(getAuth(), authStateObserver);
 }
 
@@ -29,7 +29,6 @@ async function authStateObserver(user) {
       isAdmin = true
     }
   }
-
 
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>

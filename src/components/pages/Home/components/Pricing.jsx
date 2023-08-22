@@ -22,7 +22,7 @@ const Pricing = () => {
         fetchData()
     },[])
     return (
-        <section className="pricing" id="pricing">
+        <section className="pricing" id="/#pricing">
             <Container>
                 <h2 className='my-4'>Pricing</h2>
                 <Table className='mb-5' bordered hover>

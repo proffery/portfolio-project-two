@@ -49,7 +49,7 @@ const Feedbacks = () => {
     }, [])
 
     return (
-        <section ref={ref} className="feedbacks mb-3" id="feedbacks">
+        <section ref={ref} className="feedbacks mb-3" id="/#feedbacks">
             <Container >
                 <h2 className='mb-3'>Feedbacks</h2>
             </Container>

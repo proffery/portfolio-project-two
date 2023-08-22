@@ -32,7 +32,7 @@ const MainLogo = () => {
     }, [])
 
     return (
-        <section className='main-logo shadow' id='home'>
+        <section className='main-logo shadow' id='/#'>
             <Carousel controls={false} indicators={false} fade>
             {logoPhoto.map((photo, index)=>
                 <Carousel.Item key={index}>

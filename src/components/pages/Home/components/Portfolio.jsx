@@ -69,7 +69,7 @@ const Portfolio = () => {
     }, [])
     
     return (
-        <section ref={ref} className="portfolio" id="portfolio">
+        <section ref={ref} className="portfolio" id="/#portfolio">
                 <Container>
                     <h2 className='my-4'>Portfolio</h2>
                     <Row>

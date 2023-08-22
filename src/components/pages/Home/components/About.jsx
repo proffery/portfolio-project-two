@@ -22,7 +22,7 @@ const About = () => {
         getAboutData()
     }, [])
     return (
-        <section className="about" id="about">
+        <section className="about" id="/#about">
             <Container>
                 <h2 className='my-4'>About me</h2>
                 <Row  ref={ref} className="mb-5 justify-content-center">

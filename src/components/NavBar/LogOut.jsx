@@ -4,7 +4,7 @@ import {
     getAuth,
     signOut,
 } from 'firebase/auth'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const LogOut = ({user, authStateChanged, isAdmin, signInStatus}) => {
     //console.log(user)
@@ -18,11 +18,16 @@ const LogOut = ({user, authStateChanged, isAdmin, signInStatus}) => {
                 <Dropdown.Toggle as={NavLink}><span>{user.auth.currentUser.displayName}</span></Dropdown.Toggle>
                 <Dropdown.Menu>
                     {signInStatus && 
-                        <Dropdown.Item href='/feedback'>Leave feedback</Dropdown.Item>
+                        <Dropdown.Item as={Link} to='/feedback'>Leave feedback</Dropdown.Item>
                     }
-                    <Dropdown.Item href='/#contact'>Book a session</Dropdown.Item>
+                    <Dropdown.Item 
+                        as={Link} 
+                        to={{
+                            hash: '#contact'
+                        }}
+                    >Book a session</Dropdown.Item>
                     {isAdmin &&
-                        <Dropdown.Item className='m-0 p-0' href='/admin'>
+                        <Dropdown.Item as={Link} to='/admin' className='m-0 p-0'>
                             <Alert className='m-0 py-1 px-3'>
                                 Admin board
                             </Alert>

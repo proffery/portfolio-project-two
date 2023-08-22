@@ -58,10 +58,10 @@ const Contact = () => {
     return (
         <section
             style={ generalData.bnw_mode ? {
-                backgroundImage: `url("../assets/img/contact.JPG")`,
+                backgroundImage: `url("./assets/img/contact.JPG")`,
                 filter: 'grayscale(100%)',
             } : {
-                backgroundImage: `url("../assets/img/contact.JPG")`,
+                backgroundImage: `url("./assets/img/contact.JPG")`,
                 filter: 'none',
             }
         

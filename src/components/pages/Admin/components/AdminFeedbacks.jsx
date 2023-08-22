@@ -77,13 +77,22 @@ const AdminFeedbacks = () => {
                         </DropdownButton>
                     </InputGroup>
                     {feedback.deleteAlertShow && (
-                        <Alert className='d-flex flex-column' variant="danger" show={feedback.deleteAlertShow} onClose={() => setDeleteAlertShow(feedback.id, false)} dismissible>
+                        <Alert 
+                            className='alert-delete-feedback d-flex flex-column position-absolute top-50 start-50 translate-middle' 
+                            variant="danger" 
+                            show={feedback.deleteAlertShow} 
+                            onClose={() => setDeleteAlertShow(feedback.id, false)} 
+                            dismissible
+                        >
                             <Alert.Heading>Do you really want to delete this review?</Alert.Heading>
-                            <p>
-                                {feedback.feedback}
-                            </p>
-                            <Button className='align-self-center' type='button' variant='danger' onClick={() => deleteFeedbackHandler(feedback.id)}>Delete</Button>
-                      </Alert>
+                            <p>{feedback.feedback}</p>
+                            <Button 
+                                className='align-self-center' 
+                                type='button' 
+                                variant='danger' 
+                                onClick={() => deleteFeedbackHandler(feedback.id)}
+                            >Delete</Button>
+                        </Alert>
                     )}
                 </Form>
             )
