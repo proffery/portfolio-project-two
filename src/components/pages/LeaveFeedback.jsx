@@ -13,7 +13,7 @@ const LeaveFeedback = () => {
     })
     const [validated, setValidated] = useState(false)
     // eslint-disable-next-line no-unused-vars
-    const [maxLength, setMaxLength] = useState(200)
+    const [maxLength, setMaxLength] = useState(250)
     const [buttonText, setButtonText] = useState('Save')
     
     useEffect(() => {

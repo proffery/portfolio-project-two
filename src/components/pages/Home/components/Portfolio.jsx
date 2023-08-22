@@ -67,9 +67,9 @@ const Portfolio = () => {
         }
         getGenetalData()
     }, [])
-
+    
     return (
-            <section ref={ref} className="portfolio" id="portfolio">
+        <section ref={ref} className="portfolio" id="portfolio">
                 <Container>
                     <h2 className='my-4'>Portfolio</h2>
                     <Row>
@@ -94,10 +94,10 @@ const Portfolio = () => {
                                         autoPlaySpeed={5000}
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
-                                        return (
-                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
-                                        )
-                                    })}
+                                            return (
+                                                <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
+                                                )
+                                            })}
                                     </Carousel>
                                 </TabPane>
                                 <TabPane eventKey='second'>
@@ -107,10 +107,10 @@ const Portfolio = () => {
                                         autoPlaySpeed={5000}
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
-                                        return (
-                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
-                                        )
-                                    })}
+                                            return (
+                                                <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
+                                                )
+                                            })}
                                     </Carousel>
                                 </TabPane>
                                 <TabPane eventKey='third'>
@@ -120,10 +120,10 @@ const Portfolio = () => {
                                         autoPlaySpeed={5000}
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
-                                        return (
-                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
-                                        )
-                                    })}
+                                            return (
+                                                <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
+                                                )
+                                            })}
                                     </Carousel>
                                 </TabPane>
                             </Tab.Content>

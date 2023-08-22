@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react'
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 import { FeedbackCard } from "./FeedbackCard"
 import Carousel from 'react-multi-carousel'
+import { useParallax } from 'react-scroll-parallax'
 
 const Feedbacks = () => {
     const [feedbacks, setFeedbacks] = useState([])
+    const { ref } = useParallax({ speed: -5 })
 
     const responsive = {
         superLargeDesktop: {
@@ -47,27 +49,26 @@ const Feedbacks = () => {
     }, [])
 
     return (
-        <section className="feedbacks mb-5" id="feedbacks">
+        <section ref={ref} className="feedbacks mb-3" id="feedbacks">
             <Container >
                 <h2 className='mb-3'>Feedbacks</h2>
+            </Container>
                 <Carousel 
                     responsive={responsive} 
                     infinite={true} 
-                    autoPlay={true} 
-                    autoPlaySpeed={5000}
+                    autoPlay={true}
                     keyBoardControl={true}
-                    arrows={true}
+                    arrows={false}
                     focusOnSelect={false}
                     centerMode={true}
                     rewind={false}
-                    className='feedback-slider'>
+                    className='feedback-slider p-5'>
                     {feedbacks.map((feedback, index) => {
                         return (
                             <FeedbackCard key={index} {...feedback}/>
                             )
                     })}
                 </Carousel>
-            </Container>
         </section>
     )
 }
