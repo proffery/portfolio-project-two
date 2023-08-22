@@ -9,21 +9,30 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
         banner_large: 50,
         banner_small: 150,
         name: 20,
-        about: 2000
+        about: 2000,
+        instagram: 100,
+        telegram: 100,
+        whatsapp: 100
     })
     
     const [generalData, setGeneralData] = useState({
         banner_large: '',
         banner_small: '',
         name: '',
-        about: ''
+        about: '',
+        instagram: '',
+        telegram: '',
+        whatsapp: ''
     })
 
     const [lables, setLables] = useState({
         banner_large: '',
         banner_small: '',
         name: '',
-        about: ''
+        about: '',
+        instagram: '',
+        telegram: '',
+        whatsapp: ''
     })
 
     const [validated, setValidated] = useState(false)
@@ -47,7 +56,10 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
             banner_large: `Logo text large (${maxLengthes.banner_large - generalData.banner_large.length})`,
             banner_small: `Logo text small (${maxLengthes.banner_small - generalData.banner_small.length})`,
             name: `Name (${maxLengthes.name - generalData.name.length})`,
-            about: `About (${maxLengthes.about - generalData.about.length})`
+            about: `About (${maxLengthes.about - generalData.about.length})`,
+            instagram: `Instagram (${maxLengthes.instagram - generalData.instagram.length})`,
+            telegram: `Telegram (${maxLengthes.telegram - generalData.telegram.length})`,
+            whatsapp: `WhatsApp (${maxLengthes.whatsapp - generalData.whatsapp.length})`
         })
     }, [generalData, maxLengthes])
 
@@ -74,7 +86,7 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
             .then(setAdditionalHeader(() => 
                 <>
                     <span>Admin Board </span>
-                    <Button onClick={() => {refreshPage()}} variant="secondary" type="button">Refresh page</Button>
+                    <Button onClick={() => {refreshPage()}} variant="secondary" type="button">Reload page</Button>
                 </>
             ))
 
@@ -85,26 +97,96 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
         <Form noValidate validated={validated} onSubmit={onFormSubmit}>
             <Form.Group className="mb-3" >
                 <Form.Label>{lables.name}</Form.Label>
-                <Form.Control value={generalData.name} onChange={(e) => onFormUpdate('name', e.target.value)} type="text" maxLength={maxLengthes.name} placeholder="Enter name" required/>
-                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                <Form.Control 
+                    value={generalData.name} 
+                    onChange={(e) => onFormUpdate('name', e.target.value)} 
+                    type="text" 
+                    controlId="validationCustom01"
+                    maxLength={maxLengthes.name} 
+                    placeholder="Enter name" 
+                    required
+                />
                 <Form.Control.Feedback type="invalid">Please enter a username.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>{lables.banner_large}</Form.Label>
-                <Form.Control value={generalData.banner_large} onChange={(e) => onFormUpdate('banner_large', e.target.value)} as="textarea" maxLength={maxLengthes.banner_large} rows={1} placeholder="Enter text for the main banner" required/>
-                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                <Form.Control 
+                    value={generalData.banner_large} 
+                    onChange={(e) => onFormUpdate('banner_large', e.target.value)} 
+                    as="textarea" 
+                    controlId="validationCustom02"
+                    maxLength={maxLengthes.banner_large} 
+                    rows={1} 
+                    placeholder="Enter text for the main banner" 
+                    required
+                />
                 <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>{lables.banner_small}</Form.Label>
-                <Form.Control value={generalData.banner_small} onChange={(e) => onFormUpdate('banner_small', e.target.value)} as="textarea" maxLength={maxLengthes.banner_small} rows={2} placeholder="Enter text for the main banner" required/>
-                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                <Form.Control 
+                    value={generalData.banner_small} 
+                    onChange={(e) => onFormUpdate('banner_small', e.target.value)} 
+                    as="textarea" 
+                    controlId="validationCustom03"
+                    maxLength={maxLengthes.banner_small} 
+                    rows={2} 
+                    placeholder="Enter text for the main banner" 
+                    required
+                />
                 <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>{lables.about}</Form.Label>
-                <Form.Control value={generalData.about} onChange={(e) => onFormUpdate('about', e.target.value)} as="textarea" maxLength={maxLengthes.about} placeholder="Enter text for the about section" rows={6} required/>
-                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
+                <Form.Control 
+                    value={generalData.about} 
+                    onChange={(e) => onFormUpdate('about', e.target.value)} 
+                    as="textarea" 
+                    controlId="validationCustom04"
+                    maxLength={maxLengthes.about} 
+                    placeholder="Enter text for the about section" 
+                    rows={6} 
+                    required
+                />
+                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3" >
+                <Form.Label>{lables.instagram}</Form.Label>
+                <Form.Control 
+                    value={generalData.instagram} 
+                    onChange={(e) => onFormUpdate('instagram', e.target.value)} 
+                    type="text" 
+                    controlId="validationCustom05"
+                    maxLength={maxLengthes.instagram} 
+                    placeholder="Enter Instagram link" 
+                    required
+                />
+                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3" >
+                <Form.Label>{lables.telegram}</Form.Label>
+                <Form.Control 
+                    value={generalData.telegram} 
+                    onChange={(e) => onFormUpdate('telegram', e.target.value)} 
+                    type="text" 
+                    controlId="validationCustom06"
+                    maxLength={maxLengthes.telegram} 
+                    placeholder="Enter Telegram link" 
+                    required
+                />
+                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3" >
+                <Form.Label>{lables.whatsapp}</Form.Label>
+                <Form.Control 
+                    value={generalData.whatsapp} 
+                    onChange={(e) => onFormUpdate('whatsapp', e.target.value)} 
+                    type="text" 
+                    controlId="validationCustom07"
+                    maxLength={maxLengthes.whatsapp} 
+                    placeholder="Enter WhatsApp link" 
+                    required
+                />
                 <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
             </Form.Group>
             <Button variant="secondary" type="submit">{buttonText}</Button>

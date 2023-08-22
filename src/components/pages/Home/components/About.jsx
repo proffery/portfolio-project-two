@@ -8,7 +8,7 @@ const About = () => {
     const { ref } = useParallax({ speed: -5 })
 
     useEffect(() => {
-        const getLogoText = async() => {
+        const getAboutText = async() => {
             const docRef = doc(getFirestore(), 'admin', 'general')
             const docSnap = await getDoc(docRef)
             if (docSnap.exists()) {
@@ -17,7 +17,7 @@ const About = () => {
                 console.log("No such document!");
             }
         }
-        getLogoText()
+        getAboutText()
     }, [])
     return (
         <section className="about" id="about">
