@@ -11,6 +11,7 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
         name: 20,
         about: 2000
     })
+    
     const [generalData, setGeneralData] = useState({
         banner_large: '',
         banner_small: '',

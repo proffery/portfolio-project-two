@@ -7,6 +7,12 @@ const AdminPricing = () => {
     const [services, setServices] = useState([])
     const [validated, setValidated] = useState(false)
     const [buttonText, setButtonText] = useState('Save services')
+    // eslint-disable-next-line no-unused-vars
+    const [maxLengthes, setMaxLengthes] = useState({
+        name: 15,
+        description: 200,
+        options: 100
+    })
 
     const onNameUpdate = (value, service_index) => {
         let newServices = [...services]
@@ -34,6 +40,7 @@ const AdminPricing = () => {
 
     const onOptionsUpdate = (e, value, service_index, option_index) => {
         e.stopPropagation()
+
         let newServices = [...services]
         newServices[service_index].service_options[option_index] = value
         setServices(newServices)
@@ -111,13 +118,13 @@ const AdminPricing = () => {
         const form = e.currentTarget
         if (form.checkValidity() === false) {
             e.stopPropagation()
+            setValidated(true)
         }
         else {
             services.forEach(async(service) => await updateDoc(doc(getFirestore(), 'pricing', `${service.service_id}`), service))
             setButtonText('Saved')
-            console.log('Form submited!')
+            setValidated(true)
         }
-        setValidated(true)
     }
 
     useEffect(() => {
@@ -154,7 +161,7 @@ const AdminPricing = () => {
                     <Row key={'service' + service_index}>
                         <Form.Label>Service {service_index + 1}:</Form.Label>
                         <Form.Group>
-                            <InputGroup noValidate className="mb-3">
+                            <InputGroup hasValidation className="mb-3">
                                 <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
                                 <Form.Control
                                     placeholder="Enter service name"
@@ -163,31 +170,31 @@ const AdminPricing = () => {
                                     defaultValue={service.service_name}
                                     type='text'
                                     controlId="validationCustom01"
+                                    maxLength={maxLengthes.name}
                                     required
                                     onChange={(e) => onNameUpdate(e.target.value, service_index)}
                                 />
-                                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
                                 <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
                             </InputGroup>
 
-                            <InputGroup noValidate className="mb-3">
-                                <InputGroup.Text>Description</InputGroup.Text>
+                            <InputGroup hasValidation className="mb-3">
+                                <InputGroup.Text>Descr.</InputGroup.Text>
                                 <Form.Control 
                                     as="textarea" 
                                     aria-label="Service description"
                                     placeholder="Enter service description"
                                     defaultValue={service.service_description}
-                                    rows={1}
+                                    rows={2}
                                     type='text'
                                     controlId="validationCustom02"
+                                    maxLength={maxLengthes.description}
                                     required
                                     onChange={(e) => onDescriptionUpdate(e.target.value, service_index)}
                                 />
-                                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
                                 <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
                             </InputGroup>
 
-                            <InputGroup noValidate className="mb-">
+                            <InputGroup hasValidation className="mb-">
                                 <InputGroup.Text>Price</InputGroup.Text>
                                 <Form.Control 
                                     aria-label="Amount (to the nearest dollar)" 
@@ -195,18 +202,18 @@ const AdminPricing = () => {
                                     defaultValue={service.service_price}
                                     type='number'
                                     controlId="validationCustom03"
+                                    min={0}
                                     required
                                     onChange={(e) => onPriceUpdate(e.target.value, service_index)}
                                 />
                                 <InputGroup.Text>$</InputGroup.Text>
-                                <Form.Control.Feedback>Ok!</Form.Control.Feedback>
                                 <Form.Control.Feedback type="invalid">Please enter a number.</Form.Control.Feedback>
                             </InputGroup>
                             <Button variant='secondary' onClick={() => addOptionHandler(service_index)} className='my-2' type='button'>+ Add new option</Button>
                             {services[service_index].service_options.map((option, option_index) => 
                                 <Row key={uniqid()}>
-                                    <InputGroup noValidate className="mb-3">
-                                        <InputGroup.Text id="basic-addon1">Option {option_index + 1}</InputGroup.Text>
+                                    <InputGroup hasValidation className="mb-3">
+                                        <InputGroup.Text id="basic-addon1">{option_index + 1}</InputGroup.Text>
                                         <Form.Control
                                             placeholder={"Enter service option " + (option_index + 1)} 
                                             aria-label="Option"
@@ -214,14 +221,14 @@ const AdminPricing = () => {
                                             aria-describedby="basic-addon1"
                                             controlId="validationCustom04"
                                             type='text'
-                                            onChange={(e) => onOptionsUpdate(e, e.target.value, service_index, option_index)}
+                                            maxLength={maxLengthes.options}
                                             required
+                                            onChange={(e) => onOptionsUpdate(e, e.target.value, service_index, option_index)}
                                         />
+                                        <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
                                         <Button variant="outline-secondary" id="button-addon2" onClick={() => deleteOptionHandler(service_index, option_index)}>
                                             Delete
                                         </Button>
-                                        <Form.Control.Feedback>Ok!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
                                     </InputGroup>
                                 </Row>
                             )}
