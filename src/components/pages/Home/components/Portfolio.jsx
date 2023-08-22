@@ -1,10 +1,13 @@
+import { useState, useEffect } from 'react'
 import { Container, Row, Nav, Tab, TabPane } from 'react-bootstrap'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { PortfolioCard } from './PortfolioCard'
 import { useParallax } from 'react-scroll-parallax'
+import { doc, getDoc, getFirestore} from "firebase/firestore"
 
 const Portfolio = () => {
+    const [blackAndWhiteMode, setBlackAndWhiteMode] = useState(true)
     const { ref } = useParallax({ speed: 5 })
     const porfolioPhoto = [{
         category: "Individual",
@@ -52,6 +55,19 @@ const Portfolio = () => {
         }
     }
 
+    useEffect(() => {
+        const getGenetalData = async() => {
+            const docRef = doc(getFirestore(), 'admin', 'general')
+            const docSnap = await getDoc(docRef)
+            if (docSnap.exists()) {
+                setBlackAndWhiteMode(docSnap.data().bnw_mode)
+            } else {
+                console.log("No such document!")
+            }
+        }
+        getGenetalData()
+    }, [])
+
     return (
             <section ref={ref} className="portfolio" id="portfolio">
                 <Container>
@@ -79,7 +95,7 @@ const Portfolio = () => {
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
                                         return (
-                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
+                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
                                         )
                                     })}
                                     </Carousel>
@@ -92,7 +108,7 @@ const Portfolio = () => {
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
                                         return (
-                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
+                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
                                         )
                                     })}
                                     </Carousel>
@@ -105,7 +121,7 @@ const Portfolio = () => {
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
                                         return (
-                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto}/>
+                                            <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
                                         )
                                     })}
                                     </Carousel>

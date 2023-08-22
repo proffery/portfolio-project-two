@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 const MainLogo = () => {
     const [logoTextLarge, setLogoTextLarge] = useState('')
     const [logoTextSmall, setLogoTextSmall] = useState('')
+    const [blackAndWhite, setBlackAndWhite] = useState(true)
     const logoPhoto = [{
         imgUrl: './assets/img/logo1.JPG'
     }, {
@@ -22,14 +23,13 @@ const MainLogo = () => {
             if (docSnap.exists()) {
                 setLogoTextLarge(docSnap.data().banner_large)
                 setLogoTextSmall(docSnap.data().banner_small)
+                setBlackAndWhite(docSnap.data().bnw_mode)
               } else {
                 console.log("No such document!");
             }
         }
         getLogoText()
     }, [])
-
-    
 
     return (
         <section className='main-logo shadow' id='home'>
@@ -38,7 +38,10 @@ const MainLogo = () => {
                 <Carousel.Item key={index}>
                     <Row className="d-flex flex-column justify-content-center">
                         <Col xs={6} md={4}>
-                            <Image src={photo.imgUrl} />
+                            <Image 
+                                style={blackAndWhite ? {filter: 'grayscale(100%)'} : {filter: 'none'}} 
+                                src={photo.imgUrl} 
+                            />
                         </Col>
                     </Row>
                     <Carousel.Caption>

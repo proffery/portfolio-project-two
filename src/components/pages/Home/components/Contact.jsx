@@ -9,10 +9,11 @@ const Contact = () => {
     const [email, setEmail] = useState(user === null ? '' : user.auth.currentUser.email)
     const [selectedPackage, setSelectedPackage] = useState('')
     const [services, setServices] = useState([])
-    const [sotialLinks, setSotialLinks] = useState({
+    const [generalData, setGeneralData] = useState({
         instagram: '',
         telegram: '',
-        whatsapp:''
+        whatsapp: '',
+        bnw_mode: true
     })
     
     useEffect(() => {
@@ -22,7 +23,7 @@ const Contact = () => {
             querySnapshot.forEach((doc) => {
                 pricingData.push(
                     {
-                        service_name: doc.data().service_name
+                        service_name: doc.data().service_name,
                     }
                 )
             })
@@ -31,20 +32,21 @@ const Contact = () => {
         fetchData()
     },[])
     useEffect(() => {
-        const getSotialLinksText = async() => {
+        const fetchGeneralData = async() => {
             const docRef = doc(getFirestore(), 'admin', 'general')
             const docSnap = await getDoc(docRef)
             if (docSnap.exists()) {
-                setSotialLinks({
+                setGeneralData({
                     instagram: docSnap.data().instagram,
                     telegram: docSnap.data().telegram,
-                    whatsapp: docSnap.data().whatsapp
+                    whatsapp: docSnap.data().whatsapp,
+                    bnw_mode: docSnap.data().bnw_mode
                 })
               } else {
                 console.log("No such document!");
             }
         }
-        getSotialLinksText()
+        fetchGeneralData()
     }, [])
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -54,7 +56,19 @@ const Contact = () => {
       }
 
     return (
-        <section className="contact shadow" id="contact">
+        <section
+            style={ generalData.bnw_mode ? {
+                backgroundImage: `url("../assets/img/contact.JPG")`,
+                filter: 'grayscale(100%)',
+            } : {
+                backgroundImage: `url("../assets/img/contact.JPG")`,
+                filter: 'none',
+            }
+        
+            } 
+            className="contact shadow" 
+            id="contact"
+            >
             <Container className="py-4">
                 <h2>Sign up for a photo session</h2>
                 <Row>
@@ -102,14 +116,14 @@ const Contact = () => {
                     </Col>
                 </Row>
                 <Row className='social-icon d-flex justify-content-center'>
-                    <a target="_blank" rel="noopener noreferrer" href={sotialLinks.instagram}>
-                        <img src='./assets/img/icon-instagram.svg' alt="Instagram" title={sotialLinks.instagram}/>
+                    <a target="_blank" rel="noopener noreferrer" href={generalData.instagram}>
+                        <img src='./assets/img/icon-instagram.svg' alt="Instagram" title={generalData.instagram}/>
                     </a>
-                    <a target="_blank" rel="noopener noreferrer" href={sotialLinks.telegram}>
-                        <img src='./assets/img/icon-telegram.svg' alt="Telegram" title={sotialLinks.telegram}/>
+                    <a target="_blank" rel="noopener noreferrer" href={generalData.telegram}>
+                        <img src='./assets/img/icon-telegram.svg' alt="Telegram" title={generalData.telegram}/>
                     </a>
-                    <a target="_blank" rel="noopener noreferrer" href={sotialLinks.whatsapp}>
-                        <img src='./assets/img/icon-whatsapp.svg' alt="Whatsapp" title={sotialLinks.whatsapp}/>
+                    <a target="_blank" rel="noopener noreferrer" href={generalData.whatsapp}>
+                        <img src='./assets/img/icon-whatsapp.svg' alt="Whatsapp" title={generalData.whatsapp}/>
                     </a>
                 </Row>
             </Container>

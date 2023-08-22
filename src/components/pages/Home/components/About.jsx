@@ -5,19 +5,21 @@ import { useParallax } from 'react-scroll-parallax'
 
 const About = () => {
     const [aboutText, setAboutText] = useState('')
+    const [blackAndWhite, setBlackAndWhite] = useState(true)
     const { ref } = useParallax({ speed: -5 })
 
     useEffect(() => {
-        const getAboutText = async() => {
+        const getAboutData = async() => {
             const docRef = doc(getFirestore(), 'admin', 'general')
             const docSnap = await getDoc(docRef)
             if (docSnap.exists()) {
                 setAboutText(docSnap.data().about)
+                setBlackAndWhite(docSnap.data().bnw_mode)
             } else {
                 console.log("No such document!");
             }
         }
-        getAboutText()
+        getAboutData()
     }, [])
     return (
         <section className="about" id="about">
@@ -30,7 +32,13 @@ const About = () => {
                         </p>
                     </Col>
                     <Col md={6} className="image-holder">
-                        <Image className='my-1 rounded-0 shadow' src="./assets/img/about.JPG" alt="About me" rounded   />
+                        <Image
+                            style={blackAndWhite ? {filter: 'grayscale(100%)'} : {filter: 'none'}}     
+                            className='my-1 rounded-0 shadow' 
+                            src="./assets/img/about.JPG" 
+                            alt="About me" 
+                            rounded
+                        />
                     </Col>
                 </Row>
                 <Row ref={ref}>

@@ -1,4 +1,4 @@
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, InputGroup } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { doc, getDoc, getFirestore, setDoc} from "firebase/firestore"
 
@@ -22,7 +22,8 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
         about: '',
         instagram: '',
         telegram: '',
-        whatsapp: ''
+        whatsapp: '',
+        bnw_mode: true
     })
 
     const [lables, setLables] = useState({
@@ -95,100 +96,112 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
 
     return (
         <Form noValidate validated={validated} onSubmit={onFormSubmit}>
-            <Form.Group className="mb-3" >
-                <Form.Label>{lables.name}</Form.Label>
-                <Form.Control 
-                    value={generalData.name} 
-                    onChange={(e) => onFormUpdate('name', e.target.value)} 
-                    type="text" 
+            <InputGroup hasValidation className='d-inline'>
+                <Form.Group className="mb-3" >
+                    <Form.Label>{lables.name}</Form.Label>
+                    <Form.Control 
+                        value={generalData.name} 
+                        onChange={(e) => onFormUpdate('name', e.target.value)} 
+                        type="text" 
+                        controlId="validationCustom01"
+                        maxLength={maxLengthes.name} 
+                        placeholder="Enter name" 
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">Please enter a username.</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>{lables.banner_large}</Form.Label>
+                    <Form.Control 
+                        value={generalData.banner_large} 
+                        onChange={(e) => onFormUpdate('banner_large', e.target.value)} 
+                        as="textarea" 
+                        controlId="validationCustom01"
+                        maxLength={maxLengthes.banner_large} 
+                        rows={1} 
+                        placeholder="Enter text for the main banner" 
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>{lables.banner_small}</Form.Label>
+                    <Form.Control 
+                        value={generalData.banner_small} 
+                        onChange={(e) => onFormUpdate('banner_small', e.target.value)} 
+                        as="textarea" 
+                        controlId="validationCustom01"
+                        maxLength={maxLengthes.banner_small} 
+                        rows={2} 
+                        placeholder="Enter text for the main banner" 
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>{lables.about}</Form.Label>
+                    <Form.Control 
+                        value={generalData.about} 
+                        onChange={(e) => onFormUpdate('about', e.target.value)} 
+                        as="textarea" 
+                        controlId="validationCustom01"
+                        maxLength={maxLengthes.about} 
+                        placeholder="Enter text for the about section" 
+                        rows={6} 
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3" >
+                    <Form.Label>{lables.instagram}</Form.Label>
+                    <Form.Control 
+                        value={generalData.instagram} 
+                        onChange={(e) => onFormUpdate('instagram', e.target.value)} 
+                        type="text" 
+                        controlId="validationCustom01"
+                        maxLength={maxLengthes.instagram} 
+                        placeholder="Enter Instagram link" 
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3" >
+                    <Form.Label>{lables.telegram}</Form.Label>
+                    <Form.Control 
+                        value={generalData.telegram} 
+                        onChange={(e) => onFormUpdate('telegram', e.target.value)} 
+                        type="text" 
+                        controlId="validationCustom01"
+                        maxLength={maxLengthes.telegram} 
+                        placeholder="Enter Telegram link" 
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mb-3" >
+                    <Form.Label>{lables.whatsapp}</Form.Label>
+                    <Form.Control 
+                        value={generalData.whatsapp} 
+                        onChange={(e) => onFormUpdate('whatsapp', e.target.value)} 
+                        type="text" 
+                        controlId="validationCustom01"
+                        maxLength={maxLengthes.whatsapp} 
+                        placeholder="Enter WhatsApp link" 
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+                </Form.Group>
+            </InputGroup>
+            <InputGroup className='mb-3'>
+                <Form.Check
+                    type='checkbox'
+                    id='bnw-checkbox'
+                    label='Black-and-white mod for all images on the main page'
                     controlId="validationCustom01"
-                    maxLength={maxLengthes.name} 
-                    placeholder="Enter name" 
-                    required
+                    onChange={(e) => onFormUpdate('bnw_mode', e.target.checked)} 
+                    checked={generalData.bnw_mode}
                 />
-                <Form.Control.Feedback type="invalid">Please enter a username.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label>{lables.banner_large}</Form.Label>
-                <Form.Control 
-                    value={generalData.banner_large} 
-                    onChange={(e) => onFormUpdate('banner_large', e.target.value)} 
-                    as="textarea" 
-                    controlId="validationCustom02"
-                    maxLength={maxLengthes.banner_large} 
-                    rows={1} 
-                    placeholder="Enter text for the main banner" 
-                    required
-                />
-                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label>{lables.banner_small}</Form.Label>
-                <Form.Control 
-                    value={generalData.banner_small} 
-                    onChange={(e) => onFormUpdate('banner_small', e.target.value)} 
-                    as="textarea" 
-                    controlId="validationCustom03"
-                    maxLength={maxLengthes.banner_small} 
-                    rows={2} 
-                    placeholder="Enter text for the main banner" 
-                    required
-                />
-                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label>{lables.about}</Form.Label>
-                <Form.Control 
-                    value={generalData.about} 
-                    onChange={(e) => onFormUpdate('about', e.target.value)} 
-                    as="textarea" 
-                    controlId="validationCustom04"
-                    maxLength={maxLengthes.about} 
-                    placeholder="Enter text for the about section" 
-                    rows={6} 
-                    required
-                />
-                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3" >
-                <Form.Label>{lables.instagram}</Form.Label>
-                <Form.Control 
-                    value={generalData.instagram} 
-                    onChange={(e) => onFormUpdate('instagram', e.target.value)} 
-                    type="text" 
-                    controlId="validationCustom05"
-                    maxLength={maxLengthes.instagram} 
-                    placeholder="Enter Instagram link" 
-                    required
-                />
-                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3" >
-                <Form.Label>{lables.telegram}</Form.Label>
-                <Form.Control 
-                    value={generalData.telegram} 
-                    onChange={(e) => onFormUpdate('telegram', e.target.value)} 
-                    type="text" 
-                    controlId="validationCustom06"
-                    maxLength={maxLengthes.telegram} 
-                    placeholder="Enter Telegram link" 
-                    required
-                />
-                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3" >
-                <Form.Label>{lables.whatsapp}</Form.Label>
-                <Form.Control 
-                    value={generalData.whatsapp} 
-                    onChange={(e) => onFormUpdate('whatsapp', e.target.value)} 
-                    type="text" 
-                    controlId="validationCustom07"
-                    maxLength={maxLengthes.whatsapp} 
-                    placeholder="Enter WhatsApp link" 
-                    required
-                />
-                <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
-            </Form.Group>
+            </InputGroup>
             <Button variant="secondary" type="submit">{buttonText}</Button>
         </Form>
     )

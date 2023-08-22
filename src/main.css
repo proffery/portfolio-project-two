@@ -245,7 +245,6 @@ footer .name {
 .portfolio .card {
   display: flex;
   height: 100%;
-  filter: grayscale(100%);
 }
 
 .portfolio .card img {
@@ -279,7 +278,6 @@ footer .name {
 
 .about img[alt="About me"] {
   max-width: 100%;
-  filter: grayscale(100%);
 }
 
 .about .list-group {
@@ -323,7 +321,6 @@ footer .name {
 
 .contact {
   color: var(--font-color-white);
-  background-image: url("../assets/img/contact.JPG");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
