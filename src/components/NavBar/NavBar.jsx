@@ -10,7 +10,6 @@ const NavBar = ({authStateChanged, isAdmin}) => {
     const user = useContext(User)
     const [logoName, setLogoName] = useState('')
     const [scrolled, setScrolled] = useState(false)
-    const [activeLink, setActiveLink] = useState('home')
     // eslint-disable-next-line no-unused-vars
     const [signInStatus, setSignInStatus] = useState(user === null ? false : !!user.auth.currentUser)
     useEffect(() => {
@@ -40,21 +39,13 @@ const NavBar = ({authStateChanged, isAdmin}) => {
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
 
-    const onUpdateActiveLink = (value) => {
-        setActiveLink(value)
-    }
     return ( 
     <>
         <Navbar expand="md" data-bs-theme="dark" className={scrolled ? 'scrolled' : ''}>
             <Container>
-                <Nav.Link 
-                    className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'}
-                    data-to-scrollspy-id="/#" 
-                    onClick={() => onUpdateActiveLink('home')}
-                    href='#/#'
-                >
+                <Navbar.Brand href='#/#'>
                     <h1>{logoName}</h1>
-                </Nav.Link>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <span className='navbar-toggler-icon'></span>
                 </Navbar.Toggle>
@@ -62,32 +53,28 @@ const NavBar = ({authStateChanged, isAdmin}) => {
                     <Nav className="me-auto">
                         {/* <Nav.Link data-to-scrollspy-id="home" href="/#home">Home</Nav.Link> */}
                         <Nav.Link 
-                            className={activeLink === 'portfolio' ? 'active navbar-link' : 'navbar-link'}
-                            onClick={() => onUpdateActiveLink('portfolio')}
+                            className='navbar-link'
                             data-to-scrollspy-id="/#portfolio" 
                             href='#/#portfolio'
                         >
                             Porfolio
                         </Nav.Link>
                         <Nav.Link 
-                            className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'}
-                            onClick={() => onUpdateActiveLink('about')}
+                            className='navbar-link'
                             data-to-scrollspy-id="/#about" 
                             href='#/#about'
                         >
                             About
                         </Nav.Link>
                         <Nav.Link 
-                            className={activeLink === 'pricing' ? 'active navbar-link' : 'navbar-link'}
-                            onClick={() => onUpdateActiveLink('pricing')}
+                            className='navbar-link'
                             data-to-scrollspy-id="/#pricing" 
                             href='#/#pricing'
                         >
                             Pricing
                         </Nav.Link>
                         <Nav.Link 
-                            className={activeLink === 'feedbacks' ? 'active navbar-link' : 'navbar-link'}
-                            onClick={() => onUpdateActiveLink('feedbacks')}
+                            className='navbar-link'
                             data-to-scrollspy-id="/#feedbacks" 
                             href='#/#feedbacks'
                         >

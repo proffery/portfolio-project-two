@@ -25,9 +25,10 @@ async function authStateObserver(user) {
   let isAdmin = false
   if (user) {
     currentUser = user
-    if (await getAdminEmail() === currentUser.email) {
+    //Uncomment for SwichOff DEMO-mode!
+    //if (await getAdminEmail() === currentUser.email) {
       isAdmin = true
-    }
+    //}
   }
 
   ReactDOM.createRoot(document.getElementById('root')).render(
@@ -49,6 +50,7 @@ const refreshPage = () => {
     return () => clearTimeout(timer);
 }
 
+// eslint-disable-next-line no-unused-vars
 const getAdminEmail = async() => {    
   return (await getDoc(doc(getFirestore(), 'admin', 'email'))).data().email
 }
