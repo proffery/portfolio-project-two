@@ -109,7 +109,7 @@ nav.navbar h1 {
 }
 
 nav.navbar.scrolled {
-  padding: 2px 0;
+  padding: 5px 0;
   background-color: var(--background-color-black);
 }
 
@@ -182,7 +182,7 @@ footer {
 footer a {
   text-decoration: none;
   margin-right: .5rem;
-  color: var(--font-color-black);
+  color: var();
 }
 
 footer a:visited {
@@ -543,6 +543,6 @@ footer .name {
   color: var(--font-color-black);
 }
 
-.admin-board .alert-delete-feedback {
+.alert {
   z-index: 999;
 }

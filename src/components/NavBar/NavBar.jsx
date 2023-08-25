@@ -4,7 +4,6 @@ import { LogIn } from './LogIn'
 import { LogOut } from './LogOut'
 import { User } from '../../Context/User'
 import { doc, getDoc, getFirestore} from "firebase/firestore"
-import { Link } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
 const NavBar = ({authStateChanged, isAdmin}) => {
@@ -50,10 +49,9 @@ const NavBar = ({authStateChanged, isAdmin}) => {
             <Container>
                 <Nav.Link 
                     className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'}
-                    as={Link} 
                     data-to-scrollspy-id="/#" 
                     onClick={() => onUpdateActiveLink('home')}
-                    to={'/#'}
+                    href='#/#'
                 >
                     <h1>{logoName}</h1>
                 </Nav.Link>
@@ -66,36 +64,32 @@ const NavBar = ({authStateChanged, isAdmin}) => {
                         <Nav.Link 
                             className={activeLink === 'portfolio' ? 'active navbar-link' : 'navbar-link'}
                             onClick={() => onUpdateActiveLink('portfolio')}
-                            as={Link} 
                             data-to-scrollspy-id="/#portfolio" 
-                            to={'#portfolio'}
+                            href='#/#portfolio'
                         >
                             Porfolio
                         </Nav.Link>
                         <Nav.Link 
                             className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'}
                             onClick={() => onUpdateActiveLink('about')}
-                            as={Link} 
                             data-to-scrollspy-id="/#about" 
-                            to={'#about'}
+                            href='#/#about'
                         >
                             About
                         </Nav.Link>
                         <Nav.Link 
                             className={activeLink === 'pricing' ? 'active navbar-link' : 'navbar-link'}
                             onClick={() => onUpdateActiveLink('pricing')}
-                            as={Link} 
                             data-to-scrollspy-id="/#pricing" 
-                            to={'#pricing'}
+                            href='#/#pricing'
                         >
                             Pricing
                         </Nav.Link>
                         <Nav.Link 
                             className={activeLink === 'feedbacks' ? 'active navbar-link' : 'navbar-link'}
                             onClick={() => onUpdateActiveLink('feedbacks')}
-                            as={Link} 
                             data-to-scrollspy-id="/#feedbacks" 
-                            to={'#feedbacks'}
+                            href='#/#feedbacks'
                         >
                             Feedbacks
                         </Nav.Link>
@@ -117,7 +111,7 @@ const NavBar = ({authStateChanged, isAdmin}) => {
         </Navbar>
         {scrolled && 
         <a href="#" className='back-to-top'>
-            <img src="./../../assets/img/back-to-top-icon.svg" alt="Back to top" />
+            <img src="./assets/img/back-to-top-icon.svg" alt="Back to top" />
         </a>
         }
     </>

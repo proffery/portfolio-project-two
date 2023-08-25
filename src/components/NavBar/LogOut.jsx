@@ -20,12 +20,7 @@ const LogOut = ({user, authStateChanged, isAdmin, signInStatus}) => {
                     {signInStatus && 
                         <Dropdown.Item as={Link} to='/feedback'>Leave feedback</Dropdown.Item>
                     }
-                    <Dropdown.Item 
-                        as={Link} 
-                        to={{
-                            hash: '#contact'
-                        }}
-                    >Book a session</Dropdown.Item>
+                    <Dropdown.Item href='#/#contact'>Book a session</Dropdown.Item>
                     {isAdmin &&
                         <Dropdown.Item as={Link} to='/admin' className='m-0 p-0'>
                             <Alert className='m-0 py-1 px-3'>

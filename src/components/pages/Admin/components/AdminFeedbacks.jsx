@@ -78,7 +78,7 @@ const AdminFeedbacks = () => {
                     </InputGroup>
                     {feedback.deleteAlertShow && (
                         <Alert 
-                            className='alert-delete-feedback d-flex flex-column position-absolute top-50 start-50 translate-middle' 
+                            className='alert d-flex flex-column position-fixed top-50 start-50 translate-middle' 
                             variant="danger" 
                             show={feedback.deleteAlertShow} 
                             onClose={() => setDeleteAlertShow(feedback.id, false)} 

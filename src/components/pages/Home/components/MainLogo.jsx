@@ -49,7 +49,7 @@ const MainLogo = () => {
                             <Col className='text-start'>
                                 <h2>{logoTextLarge}</h2>
                                 <p>{logoTextSmall}</p>
-                                <a href="#contact">Sign Up for a Photo Session</a>
+                                <a href="#/#contact">Sign Up for a Photo Session</a>
                             </Col>
                         </Row>
                     </Carousel.Caption>
