@@ -51,7 +51,7 @@ const Feedbacks = () => {
     return (
         <section ref={ref} className="feedbacks mb-3" id="/#feedbacks">
             <Container >
-                <h2 className='mb-3'>Feedbacks</h2>
+                <h2 className='mt-5'>Feedbacks</h2>
             </Container>
                 <Carousel 
                     responsive={responsive} 

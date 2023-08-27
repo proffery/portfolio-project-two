@@ -26,7 +26,7 @@
   --font-color-white: rgb(255, 255, 255);
   --font-color-black: rgba(17, 17, 17, 0.89);
   --background-color-black: rgb(17, 17, 17);
-  --text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.178);
+  --text-shadow: 1px 1px 2px rgb(0, 0, 0);
   --box-shadow: rgba(0, 0, 0, 0.055) 1.95px 1.95px 2.6px 0px;
   --gradient-main: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
   --gradient-card: linear-gradient(to left, #e4e3e1, #f2f2f2, #ffffff, #eaeaea);
@@ -109,7 +109,7 @@ nav.navbar h1 {
 }
 
 nav.navbar.scrolled {
-  padding: 5px 0;
+  padding: 3px 0;
   background-color: var(--background-color-black);
 }
 
@@ -154,12 +154,12 @@ nav.navbar .container {
   position: fixed;
   cursor: pointer;
   bottom: 20px;
-  right: 30px;
+  right: 20px;
   z-index: 99999;
 }
 
 .back-to-top img {
-  max-height: 3rem;;
+  max-height: 2.5rem;;
 }
 
 /*Footer*/
@@ -206,9 +206,9 @@ footer .name {
   text-transform: uppercase;
 }
 
-.main-logo .carousel .carousel-item .carousel-caption h2,
-.main-logo .carousel .carousel-item .carousel-caption p,
-.main-logo .carousel .carousel-item .carousel-caption a {
+.main-logo .carousel .carousel-item .carousel-caption .row .text-start h2,
+.main-logo .carousel .carousel-item .carousel-caption .row .text-start p,
+.main-logo .carousel .carousel-item .carousel-caption .row .text-start a {
   text-shadow: var(--text-shadow);
   margin: 0;
 }
@@ -296,6 +296,10 @@ footer .name {
   color: var(--font-color-black);
 }
 
+.pricing table {
+  overflow-x: auto;
+}
+
 .pricing table ul {
   list-style-type: none;
 }
@@ -368,6 +372,11 @@ footer .name {
 .contact form input:focus::placeholder, .contact form select:focus::placeholder {
   color: #121212;
   opacity: 0.8;
+}
+
+.contact form input[type="tel"]:focus {
+  background: url('../assets/img/plus.svg') no-repeat 6px center/6%;
+  background-color: var(--font-color-white);
 }
 
 .contact form button {
@@ -458,7 +467,7 @@ footer .name {
 
 .feedbacks .feedback-card:hover .txtBx {
   bottom: 80px;
-  text-shadow: var(--text-shadow);
+  color: var(--font-color-black);
 }
 
 .card .txtBx p {

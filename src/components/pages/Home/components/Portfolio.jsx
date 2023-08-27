@@ -3,12 +3,10 @@ import { Container, Row, Nav, Tab, TabPane } from 'react-bootstrap'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { PortfolioCard } from './PortfolioCard'
-import { useParallax } from 'react-scroll-parallax'
 import { doc, getDoc, getFirestore} from "firebase/firestore"
 
 const Portfolio = () => {
     const [blackAndWhiteMode, setBlackAndWhiteMode] = useState(true)
-    const { ref } = useParallax({ speed: 5 })
     const porfolioPhoto = [{
         category: "Individual",
         imgUrl: './assets/img/porfolio_individual1.JPG'
@@ -69,7 +67,7 @@ const Portfolio = () => {
     }, [])
     
     return (
-        <section ref={ref} className="portfolio" id="/#portfolio">
+        <section className="portfolio" id="/#portfolio">
                 <Container>
                     <h2 className='my-4'>Portfolio</h2>
                     <Row>

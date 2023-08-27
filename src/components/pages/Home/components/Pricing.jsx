@@ -25,7 +25,7 @@ const Pricing = () => {
         <section className="pricing" id="/#pricing">
             <Container>
                 <h2 className='my-4'>Pricing</h2>
-                <Table className='mb-5' bordered hover>
+                <Table bordered hover size='sm' responsive>
                     <tbody>
                         {services.map((service, index) =>
                             <tr key={`service${index}`}>

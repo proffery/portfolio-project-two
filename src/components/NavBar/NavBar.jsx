@@ -97,7 +97,7 @@ const NavBar = ({authStateChanged, isAdmin}) => {
             </Container>
         </Navbar>
         {scrolled && 
-        <a href="#" className='back-to-top'>
+        <a href="#" className='back-to-top shadow rounded-2'>
             <img src="./assets/img/back-to-top-icon.svg" alt="Back to top" />
         </a>
         }

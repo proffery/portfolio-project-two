@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react"
 import { Container, Row, Col, Alert } from "react-bootstrap"
 import { User } from '../../../../Context/User'
-import { collection, getDocs, getFirestore, doc, getDoc, setDoc } from "firebase/firestore"
+import { collection, getDocs, getFirestore, doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore"
 
 const Contact = () => {
     const user = useContext(User)
@@ -65,7 +65,9 @@ const Contact = () => {
                 name: name,
                 email: email,
                 phone: phone,
-                package: selectedPackage
+                package: selectedPackage,
+                inWork: true,
+                timestamp: serverTimestamp()
             }).then(() => {
                 showAlert('success', 'Order is processed. We will contact you shortly.', 'Success!')
                 setIsAlertShow(true)
@@ -136,9 +138,9 @@ const Contact = () => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        placeholder="111 11 111 11 11 11"
-                                        pattern="(375|7|380|1)\d{9,11}"
-                                        title="375... or 7... or 380... or 1..."
+                                        placeholder="375123456789"
+                                        pattern="(375)\d{9}"
+                                        title="375123456789"
                                         required
                                     />
                                 </Col>
