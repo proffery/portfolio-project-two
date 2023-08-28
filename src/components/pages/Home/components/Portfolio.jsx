@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Container, Row, Nav, Tab, TabPane } from 'react-bootstrap'
+import { Container, Row, Nav, Tab, TabPane, Image } from 'react-bootstrap'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { PortfolioCard } from './PortfolioCard'
@@ -8,6 +8,8 @@ import { useParallax } from 'react-scroll-parallax'
 
 const Portfolio = () => {
     const [blackAndWhiteMode, setBlackAndWhiteMode] = useState(true)
+    const [fullScreen, setFullScreen] = useState('hidden')
+    const [fullScreenUrl, setFullScreenUrl] = useState('')
     const { ref } = useParallax({ speed: 5 })
     const porfolioPhoto = [{
         category: "Individual",
@@ -69,6 +71,33 @@ const Portfolio = () => {
     }, [])
     
     return (
+        <>
+            {fullScreen === 'visible' &&
+                <div 
+                    style={{
+                    position: 'fixed',
+                    top: '0',
+                    left: '0',
+                    width: '100vw',
+                    height: '100vh',
+                    background: 'rgba(0, 0, 0, 0.5)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    visibility: `${fullScreen}`,
+                    zIndex: '9999'
+                    }}>
+                    <Image 
+                        className='shadow'
+                        style={{
+                            width: '100vw',
+                            height: '100vh',
+                            objectFit: 'contain'
+                        }} 
+                        src={fullScreenUrl} 
+                        onClick={() => setFullScreen('hidden')}
+                    />
+                </div>
+            }
         <section ref={ref} className="portfolio" id="/#portfolio">
                 <Container>
                     <h2 className='my-4'>Portfolio</h2>
@@ -95,7 +124,13 @@ const Portfolio = () => {
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
                                             return (
-                                                <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
+                                                <PortfolioCard 
+                                                    key={filteredPhoto.category + filteredPhoto.imgUrl} 
+                                                    {...filteredPhoto} 
+                                                    blackAndWhiteMode={blackAndWhiteMode}
+                                                    setFullScreen={setFullScreen}
+                                                    setFullScreenUrl={setFullScreenUrl}
+                                                />
                                                 )
                                             })}
                                     </Carousel>
@@ -108,7 +143,13 @@ const Portfolio = () => {
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
                                             return (
-                                                <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
+                                                <PortfolioCard 
+                                                    key={filteredPhoto.category + filteredPhoto.imgUrl} 
+                                                    {...filteredPhoto} 
+                                                    blackAndWhiteMode={blackAndWhiteMode}
+                                                    setFullScreen={setFullScreen}
+                                                    setFullScreenUrl={setFullScreenUrl}
+                                                />
                                                 )
                                             })}
                                     </Carousel>
@@ -121,9 +162,16 @@ const Portfolio = () => {
                                         className='portfolio-slider'>
                                         {porfolioPhoto.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
                                             return (
-                                                <PortfolioCard key={filteredPhoto.category + filteredPhoto.imgUrl} {...filteredPhoto} blackAndWhiteMode={blackAndWhiteMode}/>
-                                                )
-                                            })}
+                                                <PortfolioCard 
+                                                    key={filteredPhoto.category + filteredPhoto.imgUrl} 
+                                                    {...filteredPhoto} 
+                                                    blackAndWhiteMode={blackAndWhiteMode}
+                                                    setFullScreen={setFullScreen}
+                                                    setFullScreenUrl={setFullScreenUrl}
+                                                />
+                                            )
+                                            
+                                        })}
                                     </Carousel>
                                 </TabPane>
                             </Tab.Content>
@@ -131,6 +179,7 @@ const Portfolio = () => {
                     </Row>
                 </Container>
             </section>
+        </>
     )
 }
 
