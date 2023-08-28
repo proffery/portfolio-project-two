@@ -103,7 +103,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                         value={generalData.name} 
                         onChange={(e) => onFormUpdate('name', e.target.value)} 
                         type="text" 
-                        controlId="validationCustom01"
                         maxLength={maxLengthes.name} 
                         placeholder="Enter name" 
                         required
@@ -116,7 +115,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                         value={generalData.banner_large} 
                         onChange={(e) => onFormUpdate('banner_large', e.target.value)} 
                         as="textarea" 
-                        controlId="validationCustom01"
                         maxLength={maxLengthes.banner_large} 
                         rows={1} 
                         placeholder="Enter text for the main banner" 
@@ -130,7 +128,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                         value={generalData.banner_small} 
                         onChange={(e) => onFormUpdate('banner_small', e.target.value)} 
                         as="textarea" 
-                        controlId="validationCustom01"
                         maxLength={maxLengthes.banner_small} 
                         rows={2} 
                         placeholder="Enter text for the main banner" 
@@ -144,7 +141,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                         value={generalData.about} 
                         onChange={(e) => onFormUpdate('about', e.target.value)} 
                         as="textarea" 
-                        controlId="validationCustom01"
                         maxLength={maxLengthes.about} 
                         placeholder="Enter text for the about section" 
                         rows={6} 
@@ -158,7 +154,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                         value={generalData.instagram} 
                         onChange={(e) => onFormUpdate('instagram', e.target.value)} 
                         type="text" 
-                        controlId="validationCustom01"
                         maxLength={maxLengthes.instagram} 
                         placeholder="Enter Instagram link" 
                         required
@@ -171,7 +166,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                         value={generalData.telegram} 
                         onChange={(e) => onFormUpdate('telegram', e.target.value)} 
                         type="text" 
-                        controlId="validationCustom01"
                         maxLength={maxLengthes.telegram} 
                         placeholder="Enter Telegram link" 
                         required
@@ -184,7 +178,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                         value={generalData.whatsapp} 
                         onChange={(e) => onFormUpdate('whatsapp', e.target.value)} 
                         type="text" 
-                        controlId="validationCustom01"
                         maxLength={maxLengthes.whatsapp} 
                         placeholder="Enter WhatsApp link" 
                         required
@@ -197,7 +190,6 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                     type='checkbox'
                     id='bnw-checkbox'
                     label='Black-and-white mod for all images on the main page'
-                    controlId="validationCustom01"
                     onChange={(e) => onFormUpdate('bnw_mode', e.target.checked)} 
                     checked={generalData.bnw_mode}
                 />

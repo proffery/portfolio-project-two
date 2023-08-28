@@ -169,7 +169,6 @@ const AdminPricing = () => {
                                     aria-describedby="basic-addon1"
                                     defaultValue={service.service_name}
                                     type='text'
-                                    controlId="validationCustom01"
                                     maxLength={maxLengthes.name}
                                     required
                                     onChange={(e) => onNameUpdate(e.target.value, service_index)}
@@ -186,7 +185,6 @@ const AdminPricing = () => {
                                     defaultValue={service.service_description}
                                     rows={2}
                                     type='text'
-                                    controlId="validationCustom02"
                                     maxLength={maxLengthes.description}
                                     required
                                     onChange={(e) => onDescriptionUpdate(e.target.value, service_index)}
@@ -201,7 +199,6 @@ const AdminPricing = () => {
                                     placeholder="Enter service price"
                                     defaultValue={service.service_price}
                                     type='number'
-                                    controlId="validationCustom03"
                                     min={0}
                                     required
                                     onChange={(e) => onPriceUpdate(e.target.value, service_index)}
@@ -219,7 +216,6 @@ const AdminPricing = () => {
                                             aria-label="Option"
                                             defaultValue={option}
                                             aria-describedby="basic-addon1"
-                                            controlId="validationCustom04"
                                             type='text'
                                             maxLength={maxLengthes.options}
                                             required

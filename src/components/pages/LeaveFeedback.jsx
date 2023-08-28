@@ -18,7 +18,7 @@ const LeaveFeedback = () => {
     
     useEffect(() => {
         const getFeedbackData = async() => {
-            const docRef = doc(getFirestore(), 'feedback', `${user.email}`)
+            const docRef = doc(getFirestore(), 'feedback', `${user.uid}`)
             const docSnap = await getDoc(docRef)
             if (docSnap.exists()) {
                 onFormUpdate('feedback', docSnap.data().feedback)
@@ -50,7 +50,7 @@ const LeaveFeedback = () => {
             setValidated(true)
         }
         else {
-            await setDoc(doc(getFirestore(), 'feedback', `${user.email}`), feedbackData)
+            await setDoc(doc(getFirestore(), 'feedback', `${user.uid}`), feedbackData)
             .then(setValidated(true))
             .then(setButtonText('Saved'))
         }

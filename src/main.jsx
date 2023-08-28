@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
@@ -23,23 +22,21 @@ const authStateChanged = () => {
 async function authStateObserver(user) {
   let currentUser = null
   let isAdmin = false
-  if (user) {
+  if (user !== null) {
     currentUser = user
     //Uncomment for SwichOff DEMO-mode!
-    //if (await getAdminEmail() === currentUser.email) {
+    //if (await getAdminUid() === currentUser.uid) {
       isAdmin = true
     //}
   }
 
   ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <RouterSwitch 
-          isAdmin={isAdmin} 
-          currentUser={currentUser} 
-          authStateChanged={authStateChanged} 
-          refreshPage={refreshPage}
-        />
-    </React.StrictMode>,
+    <RouterSwitch 
+      isAdmin={isAdmin} 
+      currentUser={currentUser} 
+      authStateChanged={authStateChanged} 
+      refreshPage={refreshPage}
+    />
   )
 }
 
@@ -51,8 +48,8 @@ const refreshPage = () => {
 }
 
 // eslint-disable-next-line no-unused-vars
-const getAdminEmail = async() => {    
-  return (await getDoc(doc(getFirestore(), 'admin', 'email'))).data().email
+const getAdminUid = async() => {    
+  return (await getDoc(doc(getFirestore(), 'admin', 'uid'))).data().uid
 }
 
 const firebaseAppConfig = getFirebaseConfig()

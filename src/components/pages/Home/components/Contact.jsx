@@ -1,12 +1,11 @@
-import { useState, useContext, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Container, Row, Col, Alert } from "react-bootstrap"
-import { User } from '../../../../Context/User'
 import { collection, getDocs, getFirestore, doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore"
 
 const Contact = () => {
-    const user = useContext(User)
-    const [name, setName] = useState(user === null ? '' : user.auth.currentUser.displayName)
-    const [email, setEmail] = useState(user === null ? '' : user.auth.currentUser.email)
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [selectedPackage, setSelectedPackage] = useState('')
     const [services, setServices] = useState([])
@@ -118,7 +117,7 @@ const Contact = () => {
                                         id="name"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        placeholder="Name"
+                                        placeholder="Name*"
                                         required
                                     />
                                 </Col>
@@ -128,7 +127,7 @@ const Contact = () => {
                                         id="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="Email Addres"
+                                        placeholder="Email Addres*"
                                         required
                                     />
                                 </Col>
@@ -138,7 +137,7 @@ const Contact = () => {
                                         id="phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        placeholder="375123456789"
+                                        placeholder="Phone*"
                                         pattern="(375)\d{9}"
                                         title="375123456789"
                                         required

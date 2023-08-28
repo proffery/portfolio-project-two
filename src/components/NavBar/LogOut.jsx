@@ -31,7 +31,7 @@ const LogOut = ({user, authStateChanged, isAdmin, signInStatus}) => {
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleLogOut}>Exit</Dropdown.Item>
                 </Dropdown.Menu>
-                </Dropdown>
+            </Dropdown>
         </>
     )
 } 

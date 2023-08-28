@@ -31,7 +31,7 @@ const AdminBoard = ({refreshPage}) => {
                 </Nav>
                 <Tab.Content>
                     <Tab.Pane eventKey="orders">
-                        <AdminOrders />
+                        <AdminOrders />  
                     </Tab.Pane>
                     <Tab.Pane eventKey="feedbacks">
                         <AdminFeedbacks />

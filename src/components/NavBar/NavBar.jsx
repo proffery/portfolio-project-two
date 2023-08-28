@@ -57,7 +57,7 @@ const NavBar = ({authStateChanged, isAdmin}) => {
                             data-to-scrollspy-id="/#portfolio" 
                             href='#/#portfolio'
                         >
-                            Porfolio
+                            Portfolio
                         </Nav.Link>
                         <Nav.Link 
                             className='navbar-link'
@@ -97,7 +97,7 @@ const NavBar = ({authStateChanged, isAdmin}) => {
             </Container>
         </Navbar>
         {scrolled && 
-        <a href="#" className='back-to-top shadow rounded-2'>
+        <a href="#/#" className='back-to-top secondary shadow rounded-5'>
             <img src="./assets/img/back-to-top-icon.svg" alt="Back to top" />
         </a>
         }

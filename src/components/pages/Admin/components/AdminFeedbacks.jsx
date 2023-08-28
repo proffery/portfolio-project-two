@@ -58,9 +58,9 @@ const AdminFeedbacks = () => {
         {feedbacks.map((feedback, index) => {
             return (
                 <Form className='mb-4' key={index + feedback.id}>
-                    <Form.Label>{feedback.author} ({feedback.id}):</Form.Label>
+                    <Form.Label>{feedback.author}:</Form.Label>
                     <InputGroup className='mb-3'>
-                        <Form.Control value={feedback.feedback} as='textarea' rows={2} readOnly/>
+                        <Form.Control value={feedback.feedback} as='textarea' rows={2} readOnly style={{resize: 'none'}}/>
                         <DropdownButton
                             variant={feedback.isPublished ? 'outline-secondary' : 'secondary'}
                             title={feedback.isPublished ? 'Published' : 'Pending...'}

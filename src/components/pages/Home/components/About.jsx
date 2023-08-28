@@ -24,7 +24,7 @@ const About = () => {
     return (
         <section className="about" id="/#about">
             <Container>
-                <h2 className='my-4'>About me</h2>
+                <h2 className='my-4'>About</h2>
                 <Row  ref={ref} className="mb-5 justify-content-center">
                     <Col>
                         <p>
@@ -42,8 +42,7 @@ const About = () => {
                     </Col>
                 </Row>
                 <Row ref={ref}>
-                    <h2>Process</h2>
-                    <ListGroup horizontal={'md'} className="mt-3">
+                    <ListGroup horizontal={'md'} className="mt-2">
                         <ListGroup.Item>
                             <h3>Acquaintance</h3>
                             <p>

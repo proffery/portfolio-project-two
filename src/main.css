@@ -27,7 +27,7 @@
   --font-color-black: rgba(17, 17, 17, 0.89);
   --background-color-black: rgb(17, 17, 17);
   --text-shadow: 1px 1px 2px rgb(0, 0, 0);
-  --box-shadow: rgba(0, 0, 0, 0.055) 1.95px 1.95px 2.6px 0px;
+  --box-shadow: rgba(0, 0, 0, 0.055) 1.95px 1.95px 5.6px 0px;
   --gradient-main: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
   --gradient-card: linear-gradient(to left, #e4e3e1, #f2f2f2, #ffffff, #eaeaea);
 }
@@ -156,10 +156,14 @@ nav.navbar .container {
   bottom: 20px;
   right: 20px;
   z-index: 99999;
+  background-color: var(--background-color-black);
+  padding: .35rem;
+  opacity: .6;
 }
 
 .back-to-top img {
-  max-height: 2.5rem;;
+  max-height: 2rem;
+  filter: invert();
 }
 
 /*Footer*/
@@ -260,8 +264,11 @@ footer .name {
 }
 
 .about h3 {
-  font-size: x-large;
+  font-size: large;
   margin-bottom: 1rem;
+}
+.about h3::after {
+  content: ' →';
 }
 
 .about .image-holder {
@@ -278,15 +285,6 @@ footer .name {
 
 .about .list-group .list-group-item {
   background-color: #ffffff00;
-  border-style: none solid none solid;
-  border-width: 1px;
-}
-
-.about .list-group .list-group-item:first-child {
-  border-left: none;
-}
-
-.about .list-group .list-group-item:last-child {
   border: none;
 }
 
