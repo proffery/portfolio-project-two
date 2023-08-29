@@ -4,6 +4,7 @@ import { useState } from "react"
 import { AdminFeedbacks } from "./components/AdminFeedbacks"
 import { AdminPricing } from "./components/AdminPricing"
 import { AdminOrders } from "./components/AdminOrders"
+import { AdminPortfolio } from "./components/AdminPortfolio"
 
 // eslint-disable-next-line react/prop-types
 const AdminBoard = ({refreshPage}) => {
@@ -20,7 +21,7 @@ const AdminBoard = ({refreshPage}) => {
                         <Nav.Link eventKey="feedbacks">Feedbacks</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="gallery">Gallery</Nav.Link>
+                        <Nav.Link eventKey="portfolio">Portfolio</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="pricing">Pricing</Nav.Link>
@@ -35,6 +36,9 @@ const AdminBoard = ({refreshPage}) => {
                     </Tab.Pane>
                     <Tab.Pane eventKey="feedbacks">
                         <AdminFeedbacks />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="portfolio">
+                        <AdminPortfolio />
                     </Tab.Pane>
                     <Tab.Pane eventKey="pricing">
                         <AdminPricing />
