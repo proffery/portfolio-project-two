@@ -43,7 +43,7 @@ async function authStateObserver(user) {
 const refreshPage = () => {
   const timer = setTimeout(() => {
       window.location.reload(true)
-    }, 500);
+    }, 500)
     return () => clearTimeout(timer);
 }
 

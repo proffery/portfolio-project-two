@@ -3,7 +3,7 @@ import { Container, Row, Nav, Tab, TabPane, Image } from 'react-bootstrap'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { PortfolioCard } from './PortfolioCard'
-import { doc, getDoc, getFirestore} from "firebase/firestore"
+import { doc, getDoc, getFirestore, getDocs, collection } from "firebase/firestore"
 import { useParallax } from 'react-scroll-parallax'
 
 const Portfolio = () => {
@@ -11,35 +11,10 @@ const Portfolio = () => {
     const [fullScreen, setFullScreen] = useState('hidden')
     const [fullScreenUrl, setFullScreenUrl] = useState('')
     const { ref } = useParallax({ speed: 5 })
-    const porfolioPhotos = [{
-        category: "Individual",
-        imgUrl: './assets/img/porfolio_individual1.JPG'
-    }, {
-        category: "Individual",
-        imgUrl: './assets/img/porfolio_individual2.JPG'
-    }, {
-        category: "Individual",
-        imgUrl: './assets/img/porfolio_individual3.JPG'
-    }, {
-        category: "Love story",
-        imgUrl: './assets/img/logo2.JPG'
-    }, {
-        category: "Individual",
-        imgUrl: './assets/img/porfolio_individual4.JPG'
-    }, {
-        category: "Love story",
-        imgUrl: './assets/img/porfolio_love1.JPG'
-    }, {
-        category: "Love story",
-        imgUrl: './assets/img/porfolio_love2.JPG'
-    }, {
-        category: "Love story",
-        imgUrl: './assets/img/porfolio_love3.JPG'
-    }]
-
+    const [portfolioPhotos, setPortfolioPhotos] = useState([])
+    const [categories, setCategories] = useState([])
     const responsive = {
         superLargeDesktop: {
-          // the naming can be any, depends on you.
           breakpoint: { max: 4000, min: 3000 },
           items: 5
         },
@@ -69,7 +44,32 @@ const Portfolio = () => {
         }
         getGenetalData()
     }, [])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let cat = []
+            const portfolioData = []
+            const querySnapshot = await getDocs(collection(getFirestore(), "portfolio"))
+            querySnapshot.forEach((doc) => {
+                portfolioData.push({
+                    category: doc.data().category,
+                    imgUrl: doc.data().imgUrl,
+                })
+                !cat.includes(doc.data().category) && (cat.push(doc.data().category))
+            })
+            setPortfolioPhotos(portfolioData)
+            setCategories(cat)
+        }
+        fetchData()
+    },[])
     
+    useEffect(() => {
+        setTimeout(() => {
+            const activeCategory = document.querySelector(`[data-rr-ui-event-key="${categories[0]}"]`)
+            activeCategory.click()
+        }, 100) 
+    }, [categories])
+
     return (
         <>
             {fullScreen === 'visible' &&
@@ -102,78 +102,37 @@ const Portfolio = () => {
                 <Container>
                     <h2 className='my-4'>Portfolio</h2>
                     <Row>
-                        <Tab.Container id="porfolio-tab" defaultActiveKey='first'>
+                        <Tab.Container id="porfolio-tab" defaultActiveKey={categories[0]}>
                             <Nav variant="underline" className="mb-4 px-3 d-flex align-items-center">
-                                <Nav.Item className='flex-fill'>
-                                    <Nav.Link className='flex-fill' eventKey="first">Individual</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item className='flex-fill'>
-                                    <Nav.Link className='flex-fill' eventKey="second">Love story</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item className='flex-fill '>
-                                    <Nav.Link className='flex-fill' eventKey="third">Street</Nav.Link>
-                                </Nav.Item>
+                                {categories.map((category) => 
+                                    <Nav.Item key={category} className='flex-fill'>
+                                        <Nav.Link className='flex-fill' eventKey={category}>{category}</Nav.Link>
+                                    </Nav.Item>
+                                )}
                             </Nav>
                             <Tab.Content>
-                                <TabPane eventKey='first'>
-                                    <Carousel 
-                                        responsive={responsive} 
-                                        infinite={true} 
-                                        autoPlay={true} 
-                                        autoPlaySpeed={5000}
-                                        className='portfolio-slider'>
-                                        {porfolioPhotos.filter(photo =>  photo.category === 'Individual').map(filteredPhoto => {
-                                            return (
-                                                <PortfolioCard 
-                                                    key={filteredPhoto.category + filteredPhoto.imgUrl} 
-                                                    {...filteredPhoto} 
-                                                    blackAndWhiteMode={blackAndWhiteMode}
-                                                    setFullScreen={setFullScreen}
-                                                    setFullScreenUrl={setFullScreenUrl}
-                                                />
-                                                )
-                                            })}
-                                    </Carousel>
-                                </TabPane>
-                                <TabPane eventKey='second'>
-                                <Carousel responsive={responsive} 
-                                        infinite={true} 
-                                        autoPlay={true} 
-                                        autoPlaySpeed={5000}
-                                        className='portfolio-slider'>
-                                        {porfolioPhotos.filter(photo =>  photo.category === 'Love story').map(filteredPhoto => {
-                                            return (
-                                                <PortfolioCard 
-                                                    key={filteredPhoto.category + filteredPhoto.imgUrl} 
-                                                    {...filteredPhoto} 
-                                                    blackAndWhiteMode={blackAndWhiteMode}
-                                                    setFullScreen={setFullScreen}
-                                                    setFullScreenUrl={setFullScreenUrl}
-                                                />
-                                                )
-                                            })}
-                                    </Carousel>
-                                </TabPane>
-                                <TabPane eventKey='third'>
-                                <Carousel responsive={responsive} 
-                                        infinite={true} 
-                                        autoPlay={true} 
-                                        autoPlaySpeed={5000}
-                                        className='portfolio-slider'>
-                                        {porfolioPhotos.filter(photo =>  photo.category === 'Street').map(filteredPhoto => {
-                                            return (
-                                                <PortfolioCard 
-                                                    key={filteredPhoto.category + filteredPhoto.imgUrl} 
-                                                    {...filteredPhoto} 
-                                                    blackAndWhiteMode={blackAndWhiteMode}
-                                                    setFullScreen={setFullScreen}
-                                                    setFullScreenUrl={setFullScreenUrl}
-                                                />
-                                            )
-                                            
-                                        })}
-                                    </Carousel>
-                                </TabPane>
+                                {categories.map((category) => 
+                                    <TabPane key={category} eventKey={category}>
+                                        <Carousel 
+                                            responsive={responsive} 
+                                            infinite={true} 
+                                            autoPlay={true} 
+                                            autoPlaySpeed={5000}
+                                            className='portfolio-slider'>
+                                            {portfolioPhotos.filter(photo =>  photo.category === category).map(filteredPhoto => {
+                                                return (
+                                                    <PortfolioCard 
+                                                        key={filteredPhoto.category + filteredPhoto.imgUrl} 
+                                                        {...filteredPhoto} 
+                                                        blackAndWhiteMode={blackAndWhiteMode}
+                                                        setFullScreen={setFullScreen}
+                                                        setFullScreenUrl={setFullScreenUrl}
+                                                    />
+                                                    )
+                                                })}
+                                        </Carousel>
+                                    </TabPane>
+                                )}
                             </Tab.Content>
                         </Tab.Container>
                     </Row>

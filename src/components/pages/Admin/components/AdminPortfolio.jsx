@@ -19,6 +19,7 @@ const AdminPortfolio = () => {
     const [validated, setValidated] = useState(false)
     const [reloadComponentTrigger, setReloadComponentTrigger] = useState('')
     const [categories, setCategories] = useState([])
+    const [buttonText, setButtonText] = useState('Add new photo')
     
     useEffect(() => {
         const fetchData = async() => {
@@ -49,6 +50,7 @@ const AdminPortfolio = () => {
             const id = uniqid()
             uploadImage(id)
             setValidated(true)
+            setButtonText('Saved!')
         }
     }
     
@@ -84,6 +86,8 @@ const AdminPortfolio = () => {
         })
         .then(() => {
             setCategory('')
+            setValidated(false)
+            setButtonText('Add new photo')
             setReloadComponentTrigger(uniqid())
         })
         
@@ -141,7 +145,7 @@ const AdminPortfolio = () => {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <div className='text-center'>
-                    <Button type="submit" variant="secondary">Add photo</Button>
+                    <Button type="submit" variant="secondary">{buttonText}</Button>
                 </div>
             </Form>
             <Row className="d-flex align-items-centerd-flex justify-content-around">
@@ -151,7 +155,7 @@ const AdminPortfolio = () => {
                         <Card.Body>
                             <Card.Title className="text-center">{photo.category}</Card.Title>
                             <div className='text-center'>
-                                <Button variant="secondary" onClick={() => deleteImage(photo.id, photo.name)} >Delete</Button>
+                                <Button variant="secondary" onClick={() => deleteImage(photo.id, photo.name)}>Delete</Button>
                             </div>
                         </Card.Body>
                     </Card>

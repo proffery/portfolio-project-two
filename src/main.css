@@ -410,9 +410,9 @@ footer .name {
 }
 
 
-.feedbacks .react-multi-carousel-track {
-  gap: 6rem;
-}
+/* .feedbacks .react-multi-carousel-track {
+  gap: 3rem;
+} */
 
 /*Feedback Card*/
 
@@ -459,7 +459,8 @@ footer .name {
   background-image: var(--gradient-card);
   transition: 0.5s;
   z-index: 1;
-  padding: 1.5rem;
+  padding: 1rem;
+  text-align: center;
   color: #777;
 }
 

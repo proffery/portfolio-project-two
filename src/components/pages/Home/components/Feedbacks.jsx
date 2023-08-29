@@ -35,7 +35,6 @@ const Feedbacks = () => {
             const querySnapshot = await getDocs(q)
             const feedbacksData = []
             querySnapshot.forEach((doc) => {
-                //console.log(doc.id, " => ", doc.data())
                 feedbacksData.push({
                     author: doc.data().author,
                     isPublished: doc.data().isPublished,
@@ -57,10 +56,10 @@ const Feedbacks = () => {
                     responsive={responsive} 
                     infinite={true} 
                     autoPlay={true}
-                    keyBoardControl={true}
+                    keyBoardControl={false}
                     arrows={false}
                     focusOnSelect={false}
-                    centerMode={true}
+                    centerMode={false}
                     rewind={false}
                     className='feedback-slider p-5'>
                     {feedbacks.map((feedback, index) => {
