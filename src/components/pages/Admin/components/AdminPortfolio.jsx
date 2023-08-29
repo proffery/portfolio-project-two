@@ -15,9 +15,10 @@ import uniqid from 'uniqid'
 const AdminPortfolio = () => {
     const [file, setFile] = useState(null)
     const [category, setCategory] = useState('')
-    const [porfolioPhotos, setPorfolioPhotos] = useState([])
+    const [portfolioPhotos, setPortfolioPhotos] = useState([])
     const [validated, setValidated] = useState(false)
     const [reloadComponentTrigger, setReloadComponentTrigger] = useState('')
+    const [categories, setCategories] = useState([])
     
     useEffect(() => {
         const fetchData = async() => {
@@ -26,9 +27,15 @@ const AdminPortfolio = () => {
             querySnapshot.forEach((doc) => {
                 photosData.push(doc.data())
             })
-            setPorfolioPhotos(photosData)
+            setPortfolioPhotos(photosData)
         }
         fetchData()
+        
+        let cat = []
+            portfolioPhotos.map((photo) => 
+                !cat.includes(photo.category) && (cat.push(photo.category)))
+            setCategories(cat)
+
     },[reloadComponentTrigger])
     
     const formSubmitHandler = (e) => {
@@ -107,7 +114,17 @@ const AdminPortfolio = () => {
                             setCategory(e.target.value)
                             setValidated(false)
                         }} 
-                        required/>
+                        required
+                        list="categories"
+                    />
+                    <datalist id="categories">
+                        {categories.map((category) => 
+                            <option key={uniqid()} value={category}>{category}</option>
+                        )}
+                    </datalist>
+                    <Form.Control.Feedback type="invalid">
+                        Please choose category.
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="category"  className="mb-3">
                     <Form.Control 
@@ -116,16 +133,21 @@ const AdminPortfolio = () => {
                             setFile(e.target.files[0])
                             setValidated(false)
                         }}
-                        required />
+                        accept="image/*"
+                        required 
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        Format: png, jpg, jpeg, svg.
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <div className='text-center'>
                     <Button type="submit" variant="secondary">Add photo</Button>
                 </div>
             </Form>
             <Row className="d-flex align-items-centerd-flex justify-content-around">
-                {porfolioPhotos.map((photo) => 
-                    <Card className="m-3" style={{ width: "18rem" }} key={photo.imgUrl}>
-                        <Card.Img variant="top" src={photo.imgUrl} />
+                {portfolioPhotos.map((photo) => 
+                    <Card className="m-3 pt-3" style={{ width: "18rem" }} key={photo.imgUrl}>
+                        <Card.Img variant="top" className="rounded-0" src={photo.imgUrl} />
                         <Card.Body>
                             <Card.Title className="text-center">{photo.category}</Card.Title>
                             <div className='text-center'>
