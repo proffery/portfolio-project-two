@@ -67,7 +67,7 @@ const Portfolio = () => {
         setTimeout(() => {
             const activeCategory = document.querySelector(`[data-rr-ui-event-key="${categories[0]}"]`)
             activeCategory.click()
-        }, 100) 
+        }, 10) 
     }, [categories])
 
     return (
@@ -128,8 +128,8 @@ const Portfolio = () => {
                                                         setFullScreen={setFullScreen}
                                                         setFullScreenUrl={setFullScreenUrl}
                                                     />
-                                                    )
-                                                })}
+                                                )
+                                            })}
                                         </Carousel>
                                     </TabPane>
                                 )}

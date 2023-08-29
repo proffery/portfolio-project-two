@@ -11,6 +11,7 @@ const Contact = () => {
     const [services, setServices] = useState([])
     const [isAlertShow, setIsAlertShow] = useState(false)
     const [alert, setAlert] = useState('')
+    const [logoPhoto, setLogoPhoto] = useState('')
     const [generalData, setGeneralData] = useState({
         instagram: '',
         telegram: '',
@@ -33,6 +34,7 @@ const Contact = () => {
         }
         fetchData()
     },[])
+
     useEffect(() => {
         const fetchGeneralData = async() => {
             const docRef = doc(getFirestore(), 'admin', 'general')
@@ -49,6 +51,21 @@ const Contact = () => {
             }
         }
         fetchGeneralData()
+    }, [])
+
+    useEffect(() => {
+        const fetchLogoPhoto = async () => {
+            const docRef = doc(getFirestore(), "contact_logo", "contact")
+            const docSnap = await getDoc(docRef)
+    
+            if (docSnap.exists()) {
+                setLogoPhoto(docSnap.data().imgUrl)
+                console.log(logoPhoto)
+            } else {
+                console.log("No such document!")
+            }
+        }
+        fetchLogoPhoto()
     }, [])
 
     const handleSubmit = async(e) => {
@@ -93,10 +110,10 @@ const Contact = () => {
             {isAlertShow && alert}
             <section
                 style={ generalData.bnw_mode ? {
-                    backgroundImage: `url("./assets/img/contact.JPG")`,
+                    backgroundImage: `url("${logoPhoto}")`,
                     filter: 'grayscale(100%)'
                 } : {
-                    backgroundImage: `url("./assets/img/contact.JPG")`,
+                    backgroundImage: `url("${logoPhoto}")`,
                     filter: 'none'
                 }
             

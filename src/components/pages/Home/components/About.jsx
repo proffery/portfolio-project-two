@@ -6,6 +6,7 @@ import { useParallax } from 'react-scroll-parallax'
 const About = () => {
     const [aboutText, setAboutText] = useState('')
     const [blackAndWhite, setBlackAndWhite] = useState(true)
+    const [logoPhoto, setLogoPhoto] = useState('')
     const { ref } = useParallax({ speed: -5 })
 
     useEffect(() => {
@@ -21,6 +22,22 @@ const About = () => {
         }
         getAboutData()
     }, [])
+
+    useEffect(() => {
+        const fetchLogoPhoto = async () => {
+            const docRef = doc(getFirestore(), "about_photo", "about")
+            const docSnap = await getDoc(docRef)
+    
+            if (docSnap.exists()) {
+                setLogoPhoto(docSnap.data().imgUrl)
+                console.log(logoPhoto)
+            } else {
+                console.log("No such document!")
+            }
+        }
+        fetchLogoPhoto()
+    }, [])
+
     return (
         <section className="about" id="/#about">
             <Container>
@@ -35,7 +52,7 @@ const About = () => {
                         <Image
                             style={blackAndWhite ? {filter: 'grayscale(100%)'} : {filter: 'none'}}     
                             className='my-1 rounded-0 shadow' 
-                            src="./assets/img/about.JPG" 
+                            src={logoPhoto} 
                             alt="About me" 
                             rounded
                         />

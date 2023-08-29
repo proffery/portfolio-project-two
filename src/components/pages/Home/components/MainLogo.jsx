@@ -1,21 +1,13 @@
 import Carousel from 'react-bootstrap/Carousel'
 import { Col, Row, Image } from 'react-bootstrap'
-import { doc, getDoc, getFirestore} from "firebase/firestore"
+import { doc, getDoc, getDocs, collection, getFirestore} from "firebase/firestore"
 import { useEffect, useState } from 'react'
 
 const MainLogo = () => {
     const [logoTextLarge, setLogoTextLarge] = useState('')
     const [logoTextSmall, setLogoTextSmall] = useState('')
     const [blackAndWhite, setBlackAndWhite] = useState(true)
-    const logoPhoto = [{
-        imgUrl: './assets/img/logo1.JPG'
-    }, {
-        imgUrl: './assets/img/logo2.JPG'
-    }, {
-        imgUrl: './assets/img/logo3.JPG'
-    }, {
-        imgUrl: './assets/img/logo4.JPG'
-    }]
+    const [logoPhotos, setLogoPhotos] = useState([]) 
     useEffect(() => {
         const getLogoText = async() => {
             const docRef = doc(getFirestore(), 'admin', 'general')
@@ -31,10 +23,22 @@ const MainLogo = () => {
         getLogoText()
     }, [])
 
+    useEffect(() => {
+        const fetchData = async() => {
+            const photosData = []
+            const querySnapshot = await getDocs(collection(getFirestore(), 'main_logo'));
+            querySnapshot.forEach((doc) => {
+                photosData.push(doc.data())
+            })
+            setLogoPhotos(photosData)
+        }
+        fetchData()
+    }, [])
+
     return (
         <section className='main-logo shadow' id='/#'>
             <Carousel controls={false} indicators={false} fade>
-            {logoPhoto.map((photo, index)=>
+            {logoPhotos.map((photo, index)=>
                 <Carousel.Item key={index}>
                     <Row className="d-flex flex-column justify-content-center">
                         <Col xs={6} md={4}>
