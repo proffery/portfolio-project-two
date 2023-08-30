@@ -30,7 +30,6 @@ const About = () => {
     
             if (docSnap.exists()) {
                 setLogoPhoto(docSnap.data().imgUrl)
-                console.log(logoPhoto)
             } else {
                 console.log("No such document!")
             }

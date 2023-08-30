@@ -1,6 +1,7 @@
-import { Container, Nav, Tab } from "react-bootstrap"
+import { Container, Nav, Tab, Row, Button } from "react-bootstrap"
 import { AdminGeneral } from "./components/AdminGeneral"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { AdminFeedbacks } from "./components/AdminFeedbacks"
 import { AdminPricing } from "./components/AdminPricing"
 import { AdminOrders } from "./components/AdminOrders"
@@ -9,9 +10,14 @@ import { AdminPortfolio } from "./components/AdminPortfolio"
 // eslint-disable-next-line react/prop-types
 const AdminBoard = ({refreshPage}) => {
     const [additionalHeader, setAdditionalHeader] = useState('Admin Board')
+    const navigate = useNavigate()
+
     return (
         <Container className="admin-board align-items-center justify-content-center">
-            <h2 className="mt-5 text-center">{additionalHeader}</h2>
+            <Row className='d-inline-flex mt-5'>
+                <Button onClick={() => navigate('/#')} variant='secondary'>Back</Button>
+            </Row>
+            <h2 className="mt-3 text-center">{additionalHeader}</h2>
             <Tab.Container defaultActiveKey="orders">
                 <Nav className=" my-3 d-flex align-items-center justify-content-center" variant="underline">
                     <Nav.Item>

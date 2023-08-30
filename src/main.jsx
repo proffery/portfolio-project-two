@@ -1,3 +1,4 @@
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './main.css'
@@ -31,12 +32,14 @@ async function authStateObserver(user) {
   }
 
   ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterSwitch 
-      isAdmin={isAdmin} 
-      currentUser={currentUser} 
-      authStateChanged={authStateChanged} 
-      refreshPage={refreshPage}
-    />
+    <React.StrictMode>
+      <RouterSwitch 
+        isAdmin={isAdmin} 
+        currentUser={currentUser} 
+        authStateChanged={authStateChanged} 
+        refreshPage={refreshPage}
+      />
+    </React.StrictMode>
   )
 }
 

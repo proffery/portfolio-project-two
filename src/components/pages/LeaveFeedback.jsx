@@ -1,10 +1,12 @@
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Button, Container, Row } from 'react-bootstrap'
 import { useState, useContext, useEffect } from 'react'
 import { doc, getDoc, getFirestore, setDoc, serverTimestamp } from "firebase/firestore"
 import { User } from '../../Context/User'
-    
+import { useNavigate } from "react-router-dom"
+
 const LeaveFeedback = () => {
     const user = useContext(User)
+    const navigate = useNavigate()
     const [feedbackData, setFeedbackData] = useState({
         feedback: '',
         isPublished: false,
@@ -57,18 +59,28 @@ const LeaveFeedback = () => {
         
         
     }
+
+
+
     return (
         <Container className='leave-feedback py-5 align-items-center justify-content-center'>
-            <h2 className="my-5 text-center">Leave Feedback</h2>
-            <Form noValidate validated={validated} onSubmit={onFormSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Kindly provide your thoughts on the work I’ve done.</Form.Label>
-                    <Form.Control value={feedbackData.feedback} onChange={(e) => onFormUpdate('feedback', e.target.value)} as="textarea" rows={3} maxLength={maxLength} placeholder="Leave your feedback here" required/>
-                    <Form.Control.Feedback>Feedback sent for moderation</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
-                </Form.Group>
-                <Button variant="secondary" type="submit">{buttonText}</Button>
-            </Form>
+            <Row className='d-inline-flex'>
+                <Button onClick={() => navigate('/#')} variant='secondary'>Back</Button>
+            </Row>
+            <Row>
+                <h2 className="my-4 text-center">Leave Feedback</h2>
+                <Form noValidate validated={validated} onSubmit={onFormSubmit}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Kindly provide your thoughts on the work I’ve done.</Form.Label>
+                        <Form.Control value={feedbackData.feedback} onChange={(e) => onFormUpdate('feedback', e.target.value)} as="textarea" rows={3} maxLength={maxLength} placeholder="Leave your feedback here" required/>
+                        <Form.Control.Feedback>Feedback sent for moderation</Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">Please enter a text.</Form.Control.Feedback>
+                    </Form.Group>
+                    <div className='text-center'>
+                        <Button variant="secondary" type="submit">{buttonText}</Button>
+                    </div>
+                </Form>
+            </Row>
 
         </Container>
     )

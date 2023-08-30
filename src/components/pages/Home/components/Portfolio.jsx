@@ -67,7 +67,7 @@ const Portfolio = () => {
         setTimeout(() => {
             const activeCategory = document.querySelector(`[data-rr-ui-event-key="${categories[0]}"]`)
             activeCategory.click()
-        }, 10) 
+        }, 50) 
     }, [categories])
 
     return (

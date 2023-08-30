@@ -11,17 +11,20 @@ const Feedbacks = () => {
 
     const responsive = {
         superLargeDesktop: {
-          // the naming can be any, depends on you.
           breakpoint: { max: 4000, min: 3000 },
-          items: 5
+          items: 6
         },
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 3
+          items: 4
         },
         tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2
+          breakpoint: { max: 1280, min: 464 },
+          items: 3
+        },
+        largeMobile: {
+            breakpoint: { max: 640, min: 464 },
+            items: 2
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
@@ -48,19 +51,20 @@ const Feedbacks = () => {
     }, [])
 
     return (
-        <section ref={ref} className="feedbacks mb-3" id="/#feedbacks">
+        <section ref={ref} className="feedbacks my-5" id="/#feedbacks">
             <Container >
                 <h2 className='mt-5'>Feedbacks</h2>
             </Container>
                 <Carousel 
                     responsive={responsive} 
                     infinite={true} 
-                    autoPlay={true}
+                    autoPlay={false}
                     keyBoardControl={false}
                     arrows={false}
                     focusOnSelect={false}
                     centerMode={false}
                     rewind={false}
+                    showDots={true}
                     className='feedback-slider p-5'>
                     {feedbacks.map((feedback, index) => {
                         return (

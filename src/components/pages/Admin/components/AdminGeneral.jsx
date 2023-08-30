@@ -194,7 +194,9 @@ const AdminGeneral = ({refreshPage, setAdditionalHeader}) => {
                     checked={generalData.bnw_mode}
                 />
             </InputGroup>
-            <Button variant="secondary" type="submit">{buttonText}</Button>
+            <div className='text-center'>
+                <Button variant="secondary" type="submit">{buttonText}</Button>
+            </div>
         </Form>
     )
 }

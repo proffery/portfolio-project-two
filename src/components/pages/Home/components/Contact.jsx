@@ -60,7 +60,6 @@ const Contact = () => {
     
             if (docSnap.exists()) {
                 setLogoPhoto(docSnap.data().imgUrl)
-                console.log(logoPhoto)
             } else {
                 console.log("No such document!")
             }
@@ -135,6 +134,7 @@ const Contact = () => {
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                         placeholder="Name*"
+                                        minLength="3"
                                         required
                                     />
                                 </Col>
