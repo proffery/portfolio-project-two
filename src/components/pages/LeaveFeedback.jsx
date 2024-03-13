@@ -56,12 +56,7 @@ const LeaveFeedback = () => {
             .then(setValidated(true))
             .then(setButtonText('Saved'))
         }
-        
-        
     }
-
-
-
     return (
         <Container className='leave-feedback py-5 align-items-center justify-content-center'>
             <Row className='d-inline-flex'>

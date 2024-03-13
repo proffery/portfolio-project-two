@@ -1,16 +1,17 @@
+import { Container } from 'react-bootstrap'
+import { ParallaxProvider } from 'react-scroll-parallax'
+import ScrollSpy from "react-ui-scrollspy"
+import { About } from './components/About'
+import { Contact } from './components/Contact'
+import { Feedbacks } from './components/Feedbacks'
 import { MainLogo } from './components/MainLogo'
 import { Portfolio } from './components/Portfolio'
-import { About } from './components/About'
 import { Pricing } from './components/Pricing'
-import { Contact } from './components/Contact'
-import ScrollSpy from "react-ui-scrollspy"
-import { ParallaxProvider } from 'react-scroll-parallax'
-import { Feedbacks } from './components/Feedbacks'
 
 const Home = () => {
 
     return (
-        <>
+        <Container>
             <ParallaxProvider>
                 <ScrollSpy scrollThrottle={300} useBoxMethod={true}>
                     <MainLogo />
@@ -21,7 +22,7 @@ const Home = () => {
                 </ScrollSpy>
                     <Contact />
             </ParallaxProvider>
-        </>
+        </Container>
     )
 }
 

@@ -458,6 +458,7 @@ footer .name {
   padding: 1rem;
   text-align: center;
   color: #777;
+  word-break: break-all;
 }
 
 .feedbacks .feedback-card:hover .txtBx {

@@ -17,7 +17,11 @@ const LogOut = ({user, authStateChanged, isAdmin, signInStatus}) => {
     return (
         <>
             <Dropdown as={NavItem}>
-                <Dropdown.Toggle as={NavLink}><span>{user !== null && user.auth.currentUser.displayName}</span></Dropdown.Toggle>
+                <Dropdown.Toggle as={NavLink}>
+                    <span>
+                        {user !== null && user.auth.currentUser.displayName}
+                    </span>
+                </Dropdown.Toggle>
                 <Dropdown.Menu>
                     {signInStatus && 
                         <Dropdown.Item as={Link} to='/feedback'>Leave feedback</Dropdown.Item>
